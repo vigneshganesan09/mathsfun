@@ -1,0 +1,105 @@
+/* Library and reader, after the Rekenpret prototype. --bk is the book's spine colour. */
+.shelf-row { display: flex; flex-direction: column; gap: var(--space-4); }
+.shelf-title { display: flex; align-items: center; gap: 12px; }
+.shelf-title .t-title { margin: 0; font-size: 26px; line-height: 30px; }
+.shelf-ic { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.bookshelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-6); }
+
+.bookcard {
+  --bk: var(--brand);
+  text-align: left; padding: 0; border: 2px solid var(--ink); border-radius: var(--radius-lg); background: var(--card);
+  box-shadow: var(--pop); overflow: hidden; display: flex; flex-direction: column; font: inherit; color: inherit; cursor: pointer;
+  transition: transform 0.12s;
+}
+button.bookcard:hover { transform: translateY(-3px) rotate(-0.5deg); }
+button.bookcard:active { transform: translateY(4px); box-shadow: none; }
+.bookcard:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.bookcard-cover { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-bottom: 2px solid var(--ink); border-left: 14px solid var(--bk); background: var(--surface); }
+.bookcard-cover > img, .bookcard-cover .art-story svg { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; }
+.bookcard-cover .art-story { height: 100%; }
+.bookcard-lvl, .bookcard-tag { position: absolute; left: 10px; top: 10px; background: #fff; border: 2px solid var(--ink); border-radius: var(--radius-pill); padding: 2px 10px; font-size: 13px; font-weight: 800; }
+.bookcard-tag { left: auto; right: 10px; background: var(--sun); }
+.bookcard-body { padding: var(--space-4); display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.bookcard-name { font-family: var(--font-display); font-size: 22px; line-height: 26px; font-weight: 800; }
+.bookcard-score { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; }
+.pdf-entry { display: flex; flex-direction: column; gap: var(--space-2); }
+
+/* drawn page / cover scene */
+.page-scene { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); }
+.bookcard-cover .page-scene { aspect-ratio: auto; height: 100%; border-radius: 0; }
+.page-scene > .art-land { position: absolute; inset: 0; }
+.page-scene-cast { position: absolute; left: 0; right: 0; bottom: 6%; display: flex; justify-content: center; align-items: flex-end; gap: var(--space-2); }
+.page-scene-items { position: absolute; left: 8px; right: 8px; top: 8px; background: rgba(255, 255, 255, 0.9); border: 2px solid var(--ink); border-radius: var(--radius-md); }
+
+/* the open book */
+.spread {
+  --bk: var(--brand);
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: #fff; border: 2px solid var(--ink);
+  border-radius: var(--radius-lg); box-shadow: var(--pop); min-height: 400px;
+}
+.spread::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(31, 42, 68, 0.12); }
+.spread-pic { min-width: 0; display: flex; align-items: center; justify-content: center; padding: var(--space-4); border-right: 8px solid var(--bk); }
+.spread-pic .page-img { max-width: 100%; max-height: 440px; width: 100%; height: auto; object-fit: contain; border-radius: 12px; display: block; }
+.spread-pic .art-story { max-width: 440px; }
+.spread-text { padding: 40px 56px; display: flex; flex-direction: column; justify-content: center; gap: var(--space-4); }
+.spread .page-text { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.6; }
+.spread .page-text.is-big { font-size: clamp(30px, 3.6vw, 44px); letter-spacing: 0.5px; }
+.turn {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--ink);
+  background: #fff; box-shadow: var(--pop); display: flex; align-items: center; justify-content: center; z-index: 2; cursor: pointer; color: var(--ink);
+}
+.turn:active:not(:disabled) { transform: translateY(calc(-50% + 4px)); box-shadow: none; }
+.turn:disabled { opacity: 0.3; cursor: default; }
+.turn-prev { left: -20px; }
+.turn-next { right: -20px; }
+@media (max-width: 820px) {
+  .spread { grid-template-columns: minmax(0, 1fr); }
+  .spread::after { display: none; }
+  .spread-pic { border-right: none; border-bottom: 8px solid var(--bk); }
+  .spread-text { padding: var(--space-6); }
+  .turn { top: 30%; }
+  .turn-prev { left: -10px; }
+  .turn-next { right: -10px; }
+}
+
+/* result */
+.read-result .res-top { justify-content: flex-start; }
+.read-result .t-display { margin: 0; font-size: 40px; line-height: 44px; }
+.read-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+.read-stat { background: #fff; border: 2px solid var(--ink); border-radius: var(--radius-lg); padding: var(--space-4); box-shadow: var(--pop); display: flex; flex-direction: column; gap: 4px; font-size: 15px; line-height: 20px; font-weight: 700; }
+.read-stat b { font-family: var(--font-display); font-size: 44px; line-height: 46px; }
+.read-stat .muted { display: block; }
+.read-stat.is-soft { background: #fff1c7; }
+@media (max-width: 820px) { .read-stats { grid-template-columns: 1fr 1fr; } }
+.read-all .read-line { font-size: 22px; line-height: 1.8; font-weight: 800; margin: 0 0 6px; }
+.rw { border-radius: 8px; padding: 0 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.rw.is-right { background: rgba(22, 130, 90, 0.14); box-shadow: inset 0 -4px 0 var(--correct); }
+.rw.is-wrong { background: var(--try-again); box-shadow: inset 0 -4px 0 var(--ink); }
+.rw.is-pend { color: var(--ink-muted); }
+
+/* The library and the open book use the prototype's wider page (960px). */
+.app:has(.library), .app:has(.spread), .app:has(.read-result) { max-width: 980px; }
+.spread .page-text { line-height: 1.55; }
+@media (max-width: 900px) {
+  .spread { grid-template-columns: minmax(0, 1fr); }
+  .spread::after { display: none; }
+  .spread-pic { border-right: none; border-bottom: 8px solid var(--bk); }
+  .spread-text { padding: var(--space-6); }
+  .turn { top: 30%; }
+}
+.star-pop { animation: burst 400ms ease-out both; }
+.read-result .big-stars svg { stroke: var(--ink); stroke-width: 1.5; }
+.spread-pic { align-items: flex-start; }
+.spread-pic > * { position: sticky; top: var(--space-4); }
+.spread .page-text:not(.is-big) { font-size: clamp(20px, 2.2vw, 26px); }
+.pdf-file-link { color: var(--ink); text-align: center; }
+.bookcard:disabled { opacity: 0.6; cursor: default; }
+
+/* PDF books: the whole PDF page is the picture, shown big, with the words to read below it. */
+.spread.is-pdf { grid-template-columns: minmax(0, 1fr); }
+.spread.is-pdf::after { display: none; }
+.spread.is-pdf .spread-pic { border-right: none; border-bottom: 8px solid var(--bk); padding: var(--space-4) var(--space-10); }
+.spread.is-pdf .spread-pic > * { position: static; }
+.spread.is-pdf .spread-pic .page-img { max-height: 70vh; box-shadow: 0 2px 0 rgba(31, 42, 68, 0.2); }
+.spread.is-pdf .spread-text { padding: var(--space-6) var(--space-10); }
+.spread.is-pdf .turn { top: 40%; }

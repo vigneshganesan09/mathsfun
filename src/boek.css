@@ -1,0 +1,269 @@
+/* Werken in je boek (book mode). Only tokens from the top of styles.css. */
+
+/* Selected chips: brand, not accent (accent is only for speech controls). */
+.boek .chip.is-on {
+  background: var(--brand);
+  color: var(--ink);
+}
+
+.boek .chip.is-on small {
+  color: var(--ink);
+}
+
+.boek-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.boek-field .en,
+.boek-note .en,
+.boek-found .en {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.boek-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.boek-input {
+  min-height: var(--touch);
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.boek-input::placeholder {
+  color: var(--ink-muted);
+}
+
+.boek-short {
+  width: 140px;
+}
+
+.boek-input.is-missing {
+  background: var(--try-again);
+  animation: shake 400ms ease-in-out;
+}
+
+.boek-key {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.boek-note {
+  color: var(--ink-muted);
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.boek-found {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-weight: 800;
+  color: var(--correct);
+}
+
+.boek-recent {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.boek-recent li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.boek-recent-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.boek-recent-text .en {
+  display: block;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.boek-stars {
+  display: inline-flex;
+  gap: var(--space-2);
+  flex: none;
+}
+
+.boek-star-off {
+  display: inline-flex;
+  color: var(--ink-muted);
+}
+
+/* ---------- calm stage for get / work / check / result ---------- */
+
+.boek-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+}
+
+.boek-stage .btn-wide {
+  max-width: 480px;
+}
+
+.boek-sub {
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.boek-art {
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+}
+
+.boek-art-soft {
+  color: var(--ink-muted);
+}
+
+.boek-big {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boek-big small {
+  font-family: var(--font-text);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.boek-marks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.boek-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.boek-mark.is-done {
+  background: var(--correct);
+  color: var(--card);
+}
+
+.boek-mark.is-retry {
+  background: var(--try-again);
+}
+
+.boek-mark.is-now {
+  box-shadow: var(--pop);
+  transform: scale(1.15);
+}
+
+.boek-timer {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.boek-clock {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.boek-bar {
+  width: 100%;
+  height: 16px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.boek-bar span {
+  display: block;
+  height: 100%;
+  background: var(--brand);
+  transition: width 500ms linear;
+}
+
+.boek-check-row {
+  display: flex;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+}
+
+.boek-answer {
+  flex: 1;
+  min-height: 64px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  text-align: center;
+}
+
+.boek-feedback {
+  width: 100%;
+  max-width: 520px;
+  text-align: left;
+}
+
+.boek-counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.boek-count-btn {
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 40px;
+}
+
+.boek-count {
+  min-width: 2ch;
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 68px;
+  font-weight: 800;
+}

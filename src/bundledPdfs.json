@@ -1,0 +1,729 @@
+[
+ {
+  "id": "pdf-asp-0087",
+  "file": "pdfs/asp-0087.pdf",
+  "level": "g3",
+  "avi": "AVI M3",
+  "colour": "#e8574f",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Ik hou van lezen!",
+   "en": "I like to read!"
+  },
+  "coverImage": "books/0087/cover.jpg",
+  "online": {
+   "sourceTitle": "I like to read",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=10547",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Letta Machoga",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0087/"
+  },
+  "en": [
+   "I like to read!",
+   "I like to read.",
+   "Who can I read to?",
+   "My sister is asleep.",
+   "Who can I read to?",
+   "My mother and grandmother are busy.",
+   "Who can I read to?",
+   "My father and grandfather are busy.",
+   "Who can I read to? I can read to myself!",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0327",
+  "file": "pdfs/asp-0327.pdf",
+  "level": "g3",
+  "avi": "AVI M3",
+  "colour": "#ff7a1a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Dieren tellen",
+   "en": "Counting animals"
+  },
+  "coverImage": "books/0327/cover.jpg",
+  "online": {
+   "sourceTitle": "Counting animals",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=9671",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Zanele Buthelezi, Thembani Dladla, Clare Verbeek",
+   "illustrator": "Rob Owen",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0327/"
+  },
+  "en": [
+   "Counting animals",
+   "One elephant is going to drink water.",
+   "Two giraffes are going to drink water.",
+   "Three buffaloes and four birds are also going to drink water.",
+   "Five impalas and six warthogs are walking to the water.",
+   "Seven zebras are running to the water.",
+   "Eight frogs and nine fish are swimming in the water.",
+   "One lion roars. He also wants to drink. Who is afraid of the lion?",
+   "One elephant is drinking water with the lion.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0030",
+  "file": "pdfs/asp-0030.pdf",
+  "level": "g3",
+  "avi": "AVI E3",
+  "colour": "#16825a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Gevoelens",
+   "en": "Feelings"
+  },
+  "coverImage": "books/0030/cover.jpg",
+  "online": {
+   "sourceTitle": "Feelings",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2884",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Kathy Arbuckle, Ingrid Schechter",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0030/"
+  },
+  "en": [
+   "Feelings",
+   "My heart feels a lot of things.",
+   "I feel happy when my granny tells us stories in the evening.",
+   "I feel silly when I play with my friend.",
+   "I feel bad when my dad says he does not have money.",
+   "I feel loved when my mom gives me a hug.",
+   ""
+  ],
+  "creditsPage": 6
+ },
+ {
+  "id": "pdf-asp-0302",
+  "file": "pdfs/asp-0302.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#3bb8a0",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Vuur",
+   "en": "Fire"
+  },
+  "coverImage": "books/0302/cover.jpg",
+  "online": {
+   "sourceTitle": "Fire",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=8565",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Deborah Namugosa, Beatrice Nabune, Alison Tukei, Rose Sabano",
+   "illustrator": "Rob Owen",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0302/"
+  },
+  "en": [
+   "Fire",
+   "Look, fire!",
+   "Fire burns.",
+   "Fire cooks.",
+   "Fire gives warmth.",
+   "Fire gives light.",
+   "Look, fire!",
+   "Fire is wonderful.",
+   "And it is powerful.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0156",
+  "file": "pdfs/asp-0156.pdf",
+  "level": "g3",
+  "avi": "AVI M3",
+  "colour": "#4ea9e0",
+  "shelf": "eerste",
+  "title": {
+   "nl": "De krokodil die honger had",
+   "en": "The hungry crocodile"
+  },
+  "coverImage": "books/0156/cover.jpg",
+  "online": {
+   "sourceTitle": "The hungry crocodile",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7043",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Christian G.",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0156/"
+  },
+  "en": [
+   "The hungry crocodile",
+   "Once there was a very hungry crocodile.",
+   "He searched for food slowly and quietly. And then…",
+   "POW!!! The crocodile strikes!",
+   "After that he is no longer hungry, and he is happy.",
+   "Until he gets hungry again.",
+   ""
+  ],
+  "creditsPage": 6
+ },
+ {
+  "id": "pdf-asp-0002",
+  "file": "pdfs/asp-0002.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#8a6fd1",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Kijk naar de dieren",
+   "en": "Look at the animals"
+  },
+  "coverImage": "books/0002/cover.jpg",
+  "online": {
+   "sourceTitle": "Look at the animals",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1221",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Jenny Katz",
+   "illustrator": "Sandy Campbell",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0002/"
+  },
+  "en": [
+   "Look at the animals",
+   "Look at the animals.",
+   "The cow says, “Moo.”",
+   "The goat says, “Meh, meh.”",
+   "The horse says, “Neigh.”",
+   "The pig says, “Grunt.”",
+   "The chicken says, “Cluck.”",
+   "The dog says, “Woof.”",
+   "The farmer says, “Shhh!”",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0003",
+  "file": "pdfs/asp-0003.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#c98d5c",
+  "shelf": "eerste",
+  "title": {
+   "nl": "School kleding",
+   "en": "School clothes"
+  },
+  "coverImage": "books/0003/cover.jpg",
+  "online": {
+   "sourceTitle": "School clothes",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1794",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0003/"
+  },
+  "en": [
+   "School clothes",
+   "This dress is long.",
+   "This jersey is big.",
+   "This bag is big.",
+   "This belt is…",
+   "This hat is small.",
+   "The socks are short.",
+   "But these shoes are new.",
+   "… they fit well.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0120",
+  "file": "pdfs/asp-0120.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#e8862f",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Haar",
+   "en": "Hair"
+  },
+  "coverImage": "books/0120/cover.jpg",
+  "online": {
+   "sourceTitle": "Hair",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1746",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Bronwen Heath, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0120/"
+  },
+  "en": [
+   "Hair",
+   "Thuli has short hair.",
+   "Anna has long hair.",
+   "Cathy has the longest hair.",
+   "Zama has plaited her hair.",
+   "Baba has a beard.",
+   "Zanele has combed her hair.",
+   "Thabo has cut his hair.",
+   "Themba has shaved his hair.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0271",
+  "file": "pdfs/asp-0271.pdf",
+  "level": "g3",
+  "avi": "AVI M3",
+  "colour": "#e8574f",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Twee",
+   "en": "Two"
+  },
+  "coverImage": "books/0271/cover.jpg",
+  "online": {
+   "sourceTitle": "Two",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=3072",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Carole Bloch",
+   "illustrator": "Richard MacIntosh",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0271/"
+  },
+  "en": [
+   "Two",
+   "Two little hands to hold.",
+   "Two little feet to kick.",
+   "Two little eyes to see.",
+   "Two little ears to hear.",
+   "And two loving arms to HUG!",
+   ""
+  ],
+  "creditsPage": 6
+ },
+ {
+  "id": "pdf-asp-0231",
+  "file": "pdfs/asp-0231.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#ff7a1a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Weerboek",
+   "en": "Weather book"
+  },
+  "coverImage": "books/0231/cover.jpg",
+  "online": {
+   "sourceTitle": "Weather book",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1861",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Sandra McDougall, Ingrid Schechter",
+   "translator": "Thomas Depoortere",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0231/"
+  },
+  "en": [
+   "Weather book",
+   "It is dry.",
+   "The sun is hot.",
+   "It is windy.",
+   "It is cloudy.",
+   "It is cold.",
+   "It is raining.",
+   "There is thunder.",
+   "I see a rainbow.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0129",
+  "file": "pdfs/asp-0129.pdf",
+  "level": "g3",
+  "avi": "AVI M3",
+  "colour": "#16825a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Lui broertje",
+   "en": "Lazy little brother"
+  },
+  "coverImage": "books/0129/cover.jpg",
+  "online": {
+   "sourceTitle": "Lazy little brother",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2896",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0129/"
+  },
+  "en": [
+   "Lazy little brother",
+   "I wake up and make fire.",
+   "I boil some water.",
+   "I chop the firewood.",
+   "I stir the pot.",
+   "I sweep the floor.",
+   "I wash the dishes.",
+   "Why do I work so hard… … when my brother is busy playing?",
+   ""
+  ],
+  "creditsPage": 8
+ },
+ {
+  "id": "pdf-asp-0067",
+  "file": "pdfs/asp-0067.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#3bb8a0",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Koken",
+   "en": "Cooking"
+  },
+  "coverImage": "books/0067/cover.jpg",
+  "online": {
+   "sourceTitle": "Cooking",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2795",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Kathy Arbuckle, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0067/"
+  },
+  "en": [
+   "Cooking",
+   "I peel the potatoes.",
+   "I chop a cabbage.",
+   "I grate the carrots.",
+   "I wash the beans.",
+   "I cut the butternut.",
+   "I chop the spinach.",
+   "My mom chops the onions.",
+   "Onions make me cry when they are chopped.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0008",
+  "file": "pdfs/asp-0008.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#4ea9e0",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Wat ben jij aan het doen?",
+   "en": "What are you doing?"
+  },
+  "coverImage": "books/0008/cover.jpg",
+  "online": {
+   "sourceTitle": "What are you doing?",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7292",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Nina Orange",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0008/"
+  },
+  "en": [
+   "What are you doing?",
+   "I am singing.",
+   "She is waving.",
+   "I am clapping.",
+   "She is stretching.",
+   "He is calling.",
+   "I am answering.",
+   "She is listening.",
+   "What are you doing?",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0009",
+  "file": "pdfs/asp-0009.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#8a6fd1",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Waar is mijn poes?",
+   "en": "Where is my cat?"
+  },
+  "coverImage": "books/0009/cover.jpg",
+  "online": {
+   "sourceTitle": "Where is my cat?",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1825",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Bronwen Heath, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0009/"
+  },
+  "en": [
+   "Where is my cat?",
+   "Where is my cat?",
+   "Is it under the bed?",
+   "Is it on top of the cupboard?",
+   "Is it behind the couch?",
+   "Is it next to the bin?",
+   "Is it inside the basket?",
+   "Is it outside the house?",
+   "Here it is!",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0112",
+  "file": "pdfs/asp-0112.pdf",
+  "level": "g3",
+  "avi": "AVI Start",
+  "colour": "#c98d5c",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Mijn lichaam",
+   "en": "My body"
+  },
+  "coverImage": "books/0112/cover.jpg",
+  "online": {
+   "sourceTitle": "My body",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1790",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0112/"
+  },
+  "en": [
+   "My body",
+   "I can run with it.",
+   "I can jump with it.",
+   "I can dance with it.",
+   "I can swim with it.",
+   "I can skip with it.",
+   "I can kick with it.",
+   "I can escape with it.",
+   "But I can never fly with it.",
+   ""
+  ],
+  "creditsPage": 9
+ },
+ {
+  "id": "pdf-asp-0337",
+  "file": "pdfs/asp-0337.pdf",
+  "level": "g4",
+  "avi": "AVI M4",
+  "colour": "#e8862f",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Kinderen van was",
+   "en": "Children of wax"
+  },
+  "coverImage": "books/0337/cover.jpg",
+  "online": {
+   "sourceTitle": "Children of wax",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2181",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Southern African Folktale",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Thomas Depoortere",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0337/"
+  },
+  "en": [
+   "Children of wax",
+   "Once upon a time, there lived a happy family.",
+   "They never fought with each other. They helped their parents at home and in the fields.",
+   "But they were not allowed to go near a fire.",
+   "They had to do all their work during the night. Because they were made of wax!",
+   "But one of the boys longed to go out in the sunlight.",
+   "One day the longing was too strong. His brothers warned him…",
+   "But it was too late! He melted in the hot sun.",
+   "The wax children were so sad to see their brother melting away.",
+   "But they made a plan. They shaped the lump of melted wax into a bird.",
+   "They took their bird brother up to a high mountain.",
+   "And as the sun rose, he flew away singing into the morning light.",
+   ""
+  ],
+  "creditsPage": 12
+ },
+ {
+  "id": "pdf-asp-0210",
+  "file": "pdfs/asp-0210.pdf",
+  "level": "g4",
+  "avi": "AVI M4",
+  "colour": "#e8574f",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Ting-gi en de koeien",
+   "en": "Tingi and the cows"
+  },
+  "coverImage": "books/0210/cover.jpg",
+  "online": {
+   "sourceTitle": "Tingi and the Cows",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7441",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Ingrid Schechter",
+   "illustrator": "Ingrid Schechter",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0210/"
+  },
+  "en": [
+   "Tingi and the cows",
+   "Tingi lived with his grandmother.",
+   "He used to look after the cows with her.",
+   "One day the soldiers came.",
+   "They took the cows away.",
+   "Tingi and his grandmother ran away and hid.",
+   "They hid in the bush until night.",
+   "Then the soldiers came back.",
+   "Grandmother hid Tingi under the leaves.",
+   "One of the soldiers put his foot right on him, but he kept quiet.",
+   "When it was safe, Tingi and his grandmother came out.",
+   "They crept home very quietly.",
+   ""
+  ],
+  "creditsPage": 12
+ },
+ {
+  "id": "pdf-asp-0342",
+  "file": "pdfs/asp-0342.pdf",
+  "level": "g4",
+  "avi": "AVI M4",
+  "colour": "#ff7a1a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Straf",
+   "en": "Punishment"
+  },
+  "coverImage": "books/0342/cover.jpg",
+  "online": {
+   "sourceTitle": "Punishment",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=11989",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Adelheid Marie Bwire",
+   "illustrator": "Melany Pietersen",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0342/"
+  },
+  "en": [
+   "Punishment",
+   "One day, mama got a lot of fruit.",
+   "“When can we have some fruit?” we ask. “We will have the fruit tonight,” says mama.",
+   "My brother Rahim is greedy. He tastes all the fruit. He eats a lot of it.",
+   "“Look at what Rahim did!” shouts my little brother. “Rahim is naughty and selfish,” I say.",
+   "Mother is angry with Rahim.",
+   "We are also angry with Rahim. But Rahim is not sorry.",
+   "“Aren’t you going to punish Rahim?” asks little brother.",
+   "“Rahim, soon you will be sorry,” warns mama.",
+   "Rahim starts to feel sick.",
+   "“My tummy is so sore,” whispers Rahim.",
+   "Mama knew this would happen. The fruit is punishing Rahim!",
+   "Later, Rahim says sorry to us. “I will never be so greedy again,” he promises. And we all believe him.",
+   ""
+  ],
+  "creditsPage": 13
+ },
+ {
+  "id": "pdf-asp-0001",
+  "file": "pdfs/asp-0001.pdf",
+  "level": "g4",
+  "avi": "AVI M4",
+  "colour": "#16825a",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Een hele lange man",
+   "en": "A very tall man"
+  },
+  "coverImage": "books/0001/cover.jpg",
+  "online": {
+   "sourceTitle": "A very tall man",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=918",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Cornelius Gulere",
+   "illustrator": "Catherine Groenewald",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0001/"
+  },
+  "en": [
+   "A very tall man",
+   "His hoe was too short.",
+   "His doorway was too low.",
+   "His bed was too short.",
+   "His bicycle was too short.",
+   "This man was too tall!",
+   "He made a very long hoe handle.",
+   "He made very high door frames.",
+   "He made a very long bed.",
+   "He bought a very high bicycle.",
+   "He sat on a very high chair. He ate with a very long fork.",
+   "He left his house and lived in a big forest. He lived for many years.",
+   ""
+  ],
+  "creditsPage": 12
+ },
+ {
+  "id": "pdf-asp-0095",
+  "file": "pdfs/asp-0095.pdf",
+  "level": "g4",
+  "avi": "AVI M4",
+  "colour": "#3bb8a0",
+  "shelf": "eerste",
+  "title": {
+   "nl": "Zama is geweldig!",
+   "en": "Zama is great!"
+  },
+  "coverImage": "books/0095/cover.jpg",
+  "online": {
+   "sourceTitle": "Zama is great!",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=9984",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Michael Oguttu",
+   "illustrator": "Vusi Malindi",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0095/"
+  },
+  "en": [
+   "Zama is great!",
+   "My little brother sleeps very late. I wake early, because I am great!",
+   "I am the one who lets in the sun.",
+   "“You’re my morning star,” says Ma.",
+   "I wash myself, I don’t need any help.",
+   "I can cope with cold water and blue smelly soap.",
+   "Ma reminds, “Don’t forget teeth.” I reply, “Never, not me!”",
+   "After washing, I greet Grandpa and Auntie, and wish them a good day.",
+   "Then I dress myself, “I’m big now Ma,” I say.",
+   "I can close my buttons and buckle my shoes.",
+   "And I make sure little brother knows all the school news.",
+   "In class I do my best in every way.",
+   "I do all these good things every day. But the thing I like most, is to play and play!",
+   ""
+  ],
+  "creditsPage": 13
+ }
+]

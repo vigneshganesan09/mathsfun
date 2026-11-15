@@ -1,0 +1,597 @@
+/* Klas · digibord: full-width classroom board. Only tokens from styles.css. */
+
+.kl {
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.kl-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  min-height: var(--touch);
+}
+
+.kl-top-label {
+  font-size: 18px;
+}
+
+.kl-spacer {
+  flex: 1;
+}
+
+.kl-keys {
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* ---------- setup ---------- */
+
+.kl-setup {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kl-setup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.kl-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Selected setup chip: brand orange + ink outline (blue is reserved for speech). */
+.kl-chip.is-sel {
+  background: var(--brand);
+  color: var(--ink);
+}
+
+.kl-chip.is-sel small {
+  color: var(--ink);
+}
+
+.kl-names {
+  width: 100%;
+  min-height: 120px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--ink);
+  padding: var(--space-2) var(--space-4);
+  font: inherit;
+  resize: vertical;
+}
+
+.kl-start {
+  align-self: center;
+  min-height: 72px;
+  padding: 0 var(--space-10);
+}
+
+.kl-go {
+  min-height: 72px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 30px;
+  padding: 0 var(--space-6);
+}
+
+/* ---------- board ---------- */
+
+.kl-board {
+  gap: var(--space-4);
+}
+
+.kl-card {
+  position: relative;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-10) var(--space-6);
+  box-shadow: var(--pop);
+  overflow: hidden;
+}
+
+.kl-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 1400px;
+}
+
+.kl-q {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.15;
+}
+
+.kl-q.is-small {
+  font-size: clamp(24px, 2.6vw, 36px);
+  color: var(--ink-muted);
+}
+
+.kl-q-en {
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.25;
+}
+
+.kl-sum {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(64px, 11vw, 160px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+
+.kl-sum.is-long {
+  font-size: clamp(48px, 7vw, 112px);
+}
+
+.kl-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15em;
+  min-width: 1.6em;
+  min-height: 1.15em;
+  padding: 0.05em 0.25em;
+  border-width: 4px;
+  border-radius: var(--radius-lg);
+}
+
+.kl-ans svg {
+  width: 0.45em;
+  height: 0.45em;
+  flex: none;
+}
+
+.kl-pic {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
+  zoom: 1.4;
+}
+
+.kl-pic .beads {
+  width: 100% !important;
+  max-width: 560px;
+}
+
+.kl-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--space-10);
+  align-items: center;
+  width: 100%;
+}
+
+.kl-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* A–D tiles */
+.kl-opts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 1400px;
+}
+
+.kl-opts.is-one {
+  grid-template-columns: 1fr;
+}
+
+.kl-opt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: 112px;
+  padding: var(--space-4) var(--space-6);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--pop);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.1;
+  transition: opacity 300ms ease-out;
+}
+
+.kl-opt-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kl-opt-text small {
+  font-family: var(--font-text);
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.kl-letter {
+  flex: none;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+  background: var(--sun);
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.kl-opt.is-right {
+  background: var(--correct);
+  color: var(--card);
+  animation: pop 400ms ease-out;
+}
+
+.kl-opt.is-right .kl-letter {
+  background: var(--card);
+  color: var(--correct);
+}
+
+.kl-opt.is-right small {
+  color: var(--card);
+}
+
+.kl-opt.is-dim {
+  opacity: 0.4;
+}
+
+.kl-solution {
+  max-width: 1000px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.kl-solution .en {
+  font-size: 20px;
+}
+
+/* star burst on reveal */
+.kl-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.kl-star {
+  position: absolute;
+  color: var(--sun);
+  animation: burst 600ms ease-out both;
+}
+
+.kl-star svg {
+  stroke: var(--ink);
+}
+
+.kl-star-0 { top: 8%; left: 6%; }
+.kl-star-1 { top: 12%; right: 8%; animation-delay: 80ms; }
+.kl-star-2 { bottom: 14%; left: 10%; animation-delay: 160ms; }
+.kl-star-3 { bottom: 10%; right: 6%; animation-delay: 240ms; }
+.kl-star-4 { top: 45%; left: 3%; animation-delay: 120ms; }
+.kl-star-5 { top: 40%; right: 3%; animation-delay: 200ms; }
+
+/* ---------- phase bar ---------- */
+
+.kl-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  min-height: 128px;
+}
+
+.kl-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.kl-phase-nl {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 800;
+}
+
+.kl-phase.is-big .kl-phase-nl {
+  font-size: 56px;
+  line-height: 60px;
+  color: var(--brand);
+  animation: pop 500ms ease-out;
+}
+
+.kl-phase .en {
+  font-size: 20px;
+}
+
+/* countdown ring */
+.kl-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex: none;
+}
+
+.kl-ring svg {
+  transform: rotate(-90deg);
+}
+
+.kl-ring-track {
+  fill: var(--card);
+  stroke: var(--surface);
+  stroke-width: 12;
+}
+
+.kl-ring-fill {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 100ms linear;
+}
+
+.kl-ring-num {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.kl-ring.is-last .kl-ring-num {
+  animation: pop 1s ease-out infinite;
+}
+
+/* ---------- teams ---------- */
+
+.kl-team {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.kl-team b {
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+.kl-team-0 {
+  background: var(--brand);
+  color: var(--ink);
+}
+
+.kl-team-1 {
+  background: var(--sun);
+  color: var(--ink);
+}
+
+.kl-team-2 {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.kl-team-all {
+  background: var(--card);
+  color: var(--ink);
+}
+
+.kl-ticks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.kl-tick {
+  min-height: 72px;
+  font-size: 22px;
+  opacity: 0.75;
+}
+
+.kl-tick.is-on {
+  opacity: 1;
+  outline: 4px solid var(--correct);
+  outline-offset: 3px;
+}
+
+/* ---------- name picker ---------- */
+
+.kl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  background: rgba(31, 42, 68, 0.55);
+}
+
+.kl-picker {
+  align-items: center;
+  text-align: center;
+  min-width: min(720px, 100%);
+  box-shadow: var(--pop);
+}
+
+.kl-pick-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(64px, 10vw, 140px);
+  line-height: 1.05;
+  color: var(--ink-muted);
+}
+
+.kl-pick-name.is-chosen {
+  color: var(--brand);
+  animation: pop 400ms ease-out;
+}
+
+/* ---------- end ---------- */
+
+.kl-end {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.kl-end-stars {
+  display: flex;
+  gap: var(--space-4);
+  color: var(--sun);
+}
+
+.kl-end-stars span {
+  animation: burst 600ms ease-out both;
+}
+
+.kl-end-stars svg {
+  stroke: var(--ink);
+}
+
+.kl-end-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1;
+}
+
+.kl-end-en {
+  font-size: 26px;
+}
+
+.kl-podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.kl-pod {
+  width: clamp(140px, 18vw, 240px);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--pop);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: var(--space-4);
+  font-weight: 800;
+  font-size: 20px;
+  animation: pop 500ms ease-out;
+}
+
+.kl-pod-rank {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+}
+
+.kl-pod-score {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+}
+
+.kl-pod-en {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.kl-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--space-6);
+}
+
+.kl-total b {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 12vw, 160px);
+  line-height: 1;
+  color: var(--correct);
+}
+
+.kl-total span {
+  font-size: 24px;
+}
+
+.kl-end-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 700px) {
+  .kl {
+    padding: var(--space-4);
+  }
+  .kl-setup-grid,
+  .kl-split,
+  .kl-opts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kl *,
+  .kl *::before,
+  .kl *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

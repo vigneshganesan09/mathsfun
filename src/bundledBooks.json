@@ -1,0 +1,1337 @@
+[
+ {
+  "id": "asp-0087",
+  "level": "g3",
+  "title": {
+   "nl": "Ik hou van lezen!",
+   "en": "I like to read!"
+  },
+  "cover": {},
+  "coverImage": "books/0087/cover.jpg",
+  "online": {
+   "sourceTitle": "I like to read",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=10547",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Letta Machoga",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0087/"
+  },
+  "pages": [
+   {
+    "nl": "Ik hou van lezen.",
+    "en": "I like to read.",
+    "image": "books/0087/01.jpg"
+   },
+   {
+    "nl": "Aan wie kan ik voorlezen?",
+    "en": "Who can I read to?",
+    "image": "books/0087/02.jpg"
+   },
+   {
+    "nl": "Mijn zusje slaapt.",
+    "en": "My sister is asleep.",
+    "image": "books/0087/03.jpg"
+   },
+   {
+    "nl": "Aan wie kan ik voorlezen?",
+    "en": "Who can I read to?",
+    "image": "books/0087/04.jpg"
+   },
+   {
+    "nl": "Mijn moeder en mijn oma zijn bezig.",
+    "en": "My mother and grandmother are busy.",
+    "image": "books/0087/05.jpg"
+   },
+   {
+    "nl": "Aan wie kan ik voorlezen?",
+    "en": "Who can I read to?",
+    "image": "books/0087/06.jpg"
+   },
+   {
+    "nl": "Mijn vader en mijn opa zijn bezig.",
+    "en": "My father and grandfather are busy.",
+    "image": "books/0087/07.jpg"
+   },
+   {
+    "nl": "Aan wie kan ik voorlezen? Ik kan aan mezelf voorlezen !",
+    "en": "Who can I read to? I can read to myself!",
+    "image": "books/0087/08.jpg"
+   }
+  ],
+  "avi": "AVI M3",
+  "shelf": "eerste",
+  "colour": "#e8574f"
+ },
+ {
+  "id": "asp-0327",
+  "level": "g3",
+  "title": {
+   "nl": "Dieren tellen",
+   "en": "Counting animals"
+  },
+  "cover": {},
+  "coverImage": "books/0327/cover.jpg",
+  "online": {
+   "sourceTitle": "Counting animals",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=9671",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Zanele Buthelezi, Thembani Dladla, Clare Verbeek",
+   "illustrator": "Rob Owen",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0327/"
+  },
+  "pages": [
+   {
+    "nl": "Een olifant gaat water drinken.",
+    "en": "One elephant is going to drink water.",
+    "image": "books/0327/01.jpg"
+   },
+   {
+    "nl": "Twee giraffen gaan water drinken.",
+    "en": "Two giraffes are going to drink water.",
+    "image": "books/0327/02.jpg"
+   },
+   {
+    "nl": "Drie buffels en vier vogels gaan ook water drinken.",
+    "en": "Three buffaloes and four birds are also going to drink water.",
+    "image": "books/0327/03.jpg"
+   },
+   {
+    "nl": "Vijf impala’s en zes wrattenzwijnen lopen naar het water.",
+    "en": "Five impalas and six warthogs are walking to the water.",
+    "image": "books/0327/04.jpg"
+   },
+   {
+    "nl": "Zeven zebra’s rennen naar het water.",
+    "en": "Seven zebras are running to the water.",
+    "image": "books/0327/05.jpg"
+   },
+   {
+    "nl": "Acht kikkers en negen vissen zwemmen in het water.",
+    "en": "Eight frogs and nine fish are swimming in the water.",
+    "image": "books/0327/06.jpg"
+   },
+   {
+    "nl": "Een leeuw brult. Hij wil ook drinken. Wie is er bang voor de leeuw?",
+    "en": "One lion roars. He also wants to drink. Who is afraid of the lion?",
+    "image": "books/0327/07.jpg"
+   },
+   {
+    "nl": "Een olifant drinkt water met de leeuw.",
+    "en": "One elephant is drinking water with the lion.",
+    "image": "books/0327/08.jpg"
+   }
+  ],
+  "avi": "AVI M3",
+  "shelf": "eerste",
+  "colour": "#ff7a1a"
+ },
+ {
+  "id": "asp-0030",
+  "level": "g3",
+  "title": {
+   "nl": "Gevoelens",
+   "en": "Feelings"
+  },
+  "cover": {},
+  "coverImage": "books/0030/cover.jpg",
+  "online": {
+   "sourceTitle": "Feelings",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2884",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Kathy Arbuckle, Ingrid Schechter",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0030/"
+  },
+  "pages": [
+   {
+    "nl": "Mijn hart voelt veel dingen.",
+    "en": "My heart feels a lot of things.",
+    "image": "books/0030/01.jpg"
+   },
+   {
+    "nl": "Ik voel me blij als mijn oma ons ‘s avonds verhaaltjes vertelt.",
+    "en": "I feel happy when my granny tells us stories in the evening.",
+    "image": "books/0030/02.jpg"
+   },
+   {
+    "nl": "Ik voel me grappig als ik met mijn vriendinnetje speel.",
+    "en": "I feel silly when I play with my friend.",
+    "image": "books/0030/03.jpg"
+   },
+   {
+    "nl": "Ik voel me verdrietig als mijn vader zegt dat hij geen geld heeft.",
+    "en": "I feel bad when my dad says he does not have money.",
+    "image": "books/0030/04.jpg"
+   },
+   {
+    "nl": "Ik voel me geliefd als mijn moeder mij een knuffel geeft.",
+    "en": "I feel loved when my mom gives me a hug.",
+    "image": "books/0030/05.jpg"
+   }
+  ],
+  "avi": "AVI E3",
+  "shelf": "eerste",
+  "colour": "#16825a"
+ },
+ {
+  "id": "asp-0302",
+  "level": "g3",
+  "title": {
+   "nl": "Vuur",
+   "en": "Fire"
+  },
+  "cover": {},
+  "coverImage": "books/0302/cover.jpg",
+  "online": {
+   "sourceTitle": "Fire",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=8565",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Deborah Namugosa, Beatrice Nabune, Alison Tukei, Rose Sabano",
+   "illustrator": "Rob Owen",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0302/"
+  },
+  "pages": [
+   {
+    "nl": "Kijk, vuur!",
+    "en": "Look, fire!",
+    "image": "books/0302/01.jpg"
+   },
+   {
+    "nl": "Vuur brand.",
+    "en": "Fire burns.",
+    "image": "books/0302/02.jpg"
+   },
+   {
+    "nl": "Vuur kookt.",
+    "en": "Fire cooks.",
+    "image": "books/0302/03.jpg"
+   },
+   {
+    "nl": "Vuur geeft warmte.",
+    "en": "Fire gives warmth.",
+    "image": "books/0302/04.jpg"
+   },
+   {
+    "nl": "Vuur geeft licht.",
+    "en": "Fire gives light.",
+    "image": "books/0302/05.jpg"
+   },
+   {
+    "nl": "Kijk, vuur!",
+    "en": "Look, fire!",
+    "image": "books/0302/06.jpg"
+   },
+   {
+    "nl": "Vuur is wonderlijk.",
+    "en": "Fire is wonderful.",
+    "image": "books/0302/07.jpg"
+   },
+   {
+    "nl": "En het is machtig.",
+    "en": "And it is powerful.",
+    "image": "books/0302/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#3bb8a0"
+ },
+ {
+  "id": "asp-0156",
+  "level": "g3",
+  "title": {
+   "nl": "De krokodil die honger had",
+   "en": "The hungry crocodile"
+  },
+  "cover": {},
+  "coverImage": "books/0156/cover.jpg",
+  "online": {
+   "sourceTitle": "The hungry crocodile",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7043",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Christian G.",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0156/"
+  },
+  "pages": [
+   {
+    "nl": "Er was eens een krokodil die erg honger had.",
+    "en": "Once there was a very hungry crocodile.",
+    "image": "books/0156/01.jpg"
+   },
+   {
+    "nl": "Hij zocht langzaam en zachtjes naar voedsel. En toen…",
+    "en": "He searched for food slowly and quietly. And then…",
+    "image": "books/0156/02.jpg"
+   },
+   {
+    "nl": "POW!!! De krokodil slaat toe!",
+    "en": "POW!!! The crocodile strikes!",
+    "image": "books/0156/03.jpg"
+   },
+   {
+    "nl": "Daarna heeft hij geen honger meer en is hij gelukkig.",
+    "en": "After that he is no longer hungry, and he is happy.",
+    "image": "books/0156/04.jpg"
+   },
+   {
+    "nl": "Totdat hij weer honger krijgt.",
+    "en": "Until he gets hungry again.",
+    "image": "books/0156/05.jpg"
+   }
+  ],
+  "avi": "AVI M3",
+  "shelf": "eerste",
+  "colour": "#4ea9e0"
+ },
+ {
+  "id": "asp-0002",
+  "level": "g3",
+  "title": {
+   "nl": "Kijk naar de dieren",
+   "en": "Look at the animals"
+  },
+  "cover": {},
+  "coverImage": "books/0002/cover.jpg",
+  "online": {
+   "sourceTitle": "Look at the animals",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1221",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Jenny Katz",
+   "illustrator": "Sandy Campbell",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0002/"
+  },
+  "pages": [
+   {
+    "nl": "Kijk naar de dieren.",
+    "en": "Look at the animals.",
+    "image": "books/0002/01.jpg"
+   },
+   {
+    "nl": "De koe zegt, “Boe”.",
+    "en": "The cow says, “Moo.”",
+    "image": "books/0002/02.jpg"
+   },
+   {
+    "nl": "De geit zegt, “Mèèè”.",
+    "en": "The goat says, “Meh, meh.”",
+    "image": "books/0002/03.jpg"
+   },
+   {
+    "nl": "Het paard zegt, “Hihi”.",
+    "en": "The horse says, “Neigh.”",
+    "image": "books/0002/04.jpg"
+   },
+   {
+    "nl": "Het varken zegt, “Knor”.",
+    "en": "The pig says, “Grunt.”",
+    "image": "books/0002/05.jpg"
+   },
+   {
+    "nl": "De kip zegt, “Tok”.",
+    "en": "The chicken says, “Cluck.”",
+    "image": "books/0002/06.jpg"
+   },
+   {
+    "nl": "De hond zegt, “Woef”.",
+    "en": "The dog says, “Woof.”",
+    "image": "books/0002/07.jpg"
+   },
+   {
+    "nl": "De boer zegt, “Ssst!”",
+    "en": "The farmer says, “Shhh!”",
+    "image": "books/0002/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#8a6fd1"
+ },
+ {
+  "id": "asp-0003",
+  "level": "g3",
+  "title": {
+   "nl": "School kleding",
+   "en": "School clothes"
+  },
+  "cover": {},
+  "coverImage": "books/0003/cover.jpg",
+  "online": {
+   "sourceTitle": "School clothes",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1794",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0003/"
+  },
+  "pages": [
+   {
+    "nl": "Deze jurk is lang.",
+    "en": "This dress is long.",
+    "image": "books/0003/01.jpg"
+   },
+   {
+    "nl": "Deze trui is groot.",
+    "en": "This jersey is big.",
+    "image": "books/0003/02.jpg"
+   },
+   {
+    "nl": "Deze tas is groot.",
+    "en": "This bag is big.",
+    "image": "books/0003/03.jpg"
+   },
+   {
+    "nl": "Deze riem is…",
+    "en": "This belt is…",
+    "image": "books/0003/04.jpg"
+   },
+   {
+    "nl": "Deze hoed is klein.",
+    "en": "This hat is small.",
+    "image": "books/0003/05.jpg"
+   },
+   {
+    "nl": "Deze sokken zijn kort.",
+    "en": "The socks are short.",
+    "image": "books/0003/06.jpg"
+   },
+   {
+    "nl": "Maar deze schoenen zijn nieuw.",
+    "en": "But these shoes are new.",
+    "image": "books/0003/07.jpg"
+   },
+   {
+    "nl": "…ze passen goed.",
+    "en": "… they fit well.",
+    "image": "books/0003/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#c98d5c"
+ },
+ {
+  "id": "asp-0120",
+  "level": "g3",
+  "title": {
+   "nl": "Haar",
+   "en": "Hair"
+  },
+  "cover": {},
+  "coverImage": "books/0120/cover.jpg",
+  "online": {
+   "sourceTitle": "Hair",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1746",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Bronwen Heath, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0120/"
+  },
+  "pages": [
+   {
+    "nl": "Thuli heeft kort haar.",
+    "en": "Thuli has short hair.",
+    "image": "books/0120/01.jpg"
+   },
+   {
+    "nl": "Anna heeft lang haar.",
+    "en": "Anna has long hair.",
+    "image": "books/0120/02.jpg"
+   },
+   {
+    "nl": "Cathy heeft het langste haar.",
+    "en": "Cathy has the longest hair.",
+    "image": "books/0120/03.jpg"
+   },
+   {
+    "nl": "Zama heeft haar haar gevlochten.",
+    "en": "Zama has plaited her hair.",
+    "image": "books/0120/04.jpg"
+   },
+   {
+    "nl": "Baba heeft een baard.",
+    "en": "Baba has a beard.",
+    "image": "books/0120/05.jpg"
+   },
+   {
+    "nl": "Zanele heeft haar haar gekamd.",
+    "en": "Zanele has combed her hair.",
+    "image": "books/0120/06.jpg"
+   },
+   {
+    "nl": "Thabo heeft zijn haar geknipt.",
+    "en": "Thabo has cut his hair.",
+    "image": "books/0120/07.jpg"
+   },
+   {
+    "nl": "Themba heeft zijn haar geschoren.",
+    "en": "Themba has shaved his hair.",
+    "image": "books/0120/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#e8862f"
+ },
+ {
+  "id": "asp-0271",
+  "level": "g3",
+  "title": {
+   "nl": "Twee",
+   "en": "Two"
+  },
+  "cover": {},
+  "coverImage": "books/0271/cover.jpg",
+  "online": {
+   "sourceTitle": "Two",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=3072",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Carole Bloch",
+   "illustrator": "Richard MacIntosh",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0271/"
+  },
+  "pages": [
+   {
+    "nl": "Twee kleine handen om vast te houden.",
+    "en": "Two little hands to hold.",
+    "image": "books/0271/01.jpg"
+   },
+   {
+    "nl": "Twee kleine voeten om mee te schoppen.",
+    "en": "Two little feet to kick.",
+    "image": "books/0271/02.jpg"
+   },
+   {
+    "nl": "Twee kleine ogen om mee te kijken.",
+    "en": "Two little eyes to see.",
+    "image": "books/0271/03.jpg"
+   },
+   {
+    "nl": "Twee kleine oren om mee te horen.",
+    "en": "Two little ears to hear.",
+    "image": "books/0271/04.jpg"
+   },
+   {
+    "nl": "En twee liefhebbende armen om mee te KNUFFELEN!",
+    "en": "And two loving arms to HUG!",
+    "image": "books/0271/05.jpg"
+   }
+  ],
+  "avi": "AVI M3",
+  "shelf": "eerste",
+  "colour": "#e8574f"
+ },
+ {
+  "id": "asp-0231",
+  "level": "g3",
+  "title": {
+   "nl": "Weerboek",
+   "en": "Weather book"
+  },
+  "cover": {},
+  "coverImage": "books/0231/cover.jpg",
+  "online": {
+   "sourceTitle": "Weather book",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1861",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Sandra McDougall, Ingrid Schechter",
+   "translator": "Thomas Depoortere",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0231/"
+  },
+  "pages": [
+   {
+    "nl": "Het is droog.",
+    "en": "It is dry.",
+    "image": "books/0231/01.jpg"
+   },
+   {
+    "nl": "De zon is heet.",
+    "en": "The sun is hot.",
+    "image": "books/0231/02.jpg"
+   },
+   {
+    "nl": "Het waait.",
+    "en": "It is windy.",
+    "image": "books/0231/03.jpg"
+   },
+   {
+    "nl": "Het is bewolkt.",
+    "en": "It is cloudy.",
+    "image": "books/0231/04.jpg"
+   },
+   {
+    "nl": "Het is koud.",
+    "en": "It is cold.",
+    "image": "books/0231/05.jpg"
+   },
+   {
+    "nl": "Het regent.",
+    "en": "It is raining.",
+    "image": "books/0231/06.jpg"
+   },
+   {
+    "nl": "Het dondert.",
+    "en": "There is thunder.",
+    "image": "books/0231/07.jpg"
+   },
+   {
+    "nl": "Ik zie een regenboog.",
+    "en": "I see a rainbow.",
+    "image": "books/0231/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#ff7a1a"
+ },
+ {
+  "id": "asp-0129",
+  "level": "g3",
+  "title": {
+   "nl": "Lui broertje",
+   "en": "Lazy little brother"
+  },
+  "cover": {},
+  "coverImage": "books/0129/cover.jpg",
+  "online": {
+   "sourceTitle": "Lazy little brother",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2896",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0129/"
+  },
+  "pages": [
+   {
+    "nl": "Ik word wakker en maak het vuur aan.",
+    "en": "I wake up and make fire.",
+    "image": "books/0129/01.jpg"
+   },
+   {
+    "nl": "Ik kook water.",
+    "en": "I boil some water.",
+    "image": "books/0129/02.jpg"
+   },
+   {
+    "nl": "Ik hak het brandhout.",
+    "en": "I chop the firewood.",
+    "image": "books/0129/03.jpg"
+   },
+   {
+    "nl": "Ik roer de pot.",
+    "en": "I stir the pot.",
+    "image": "books/0129/04.jpg"
+   },
+   {
+    "nl": "Ik veeg de vloer.",
+    "en": "I sweep the floor.",
+    "image": "books/0129/05.jpg"
+   },
+   {
+    "nl": "Ik doe de afwas.",
+    "en": "I wash the dishes.",
+    "image": "books/0129/06.jpg"
+   },
+   {
+    "nl": "Waarom werk ik zo hard…als mijn broer bezig is met spelen?",
+    "en": "Why do I work so hard… … when my brother is busy playing?",
+    "image": "books/0129/07.jpg"
+   }
+  ],
+  "avi": "AVI M3",
+  "shelf": "eerste",
+  "colour": "#16825a"
+ },
+ {
+  "id": "asp-0067",
+  "level": "g3",
+  "title": {
+   "nl": "Koken",
+   "en": "Cooking"
+  },
+  "cover": {},
+  "coverImage": "books/0067/cover.jpg",
+  "online": {
+   "sourceTitle": "Cooking",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2795",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Kathy Arbuckle, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0067/"
+  },
+  "pages": [
+   {
+    "nl": "Ik schil de aardappels.",
+    "en": "I peel the potatoes.",
+    "image": "books/0067/01.jpg"
+   },
+   {
+    "nl": "Ik hak een kool.",
+    "en": "I chop a cabbage.",
+    "image": "books/0067/02.jpg"
+   },
+   {
+    "nl": "Ik rasp de wortels.",
+    "en": "I grate the carrots.",
+    "image": "books/0067/03.jpg"
+   },
+   {
+    "nl": "Ik was de bonen.",
+    "en": "I wash the beans.",
+    "image": "books/0067/04.jpg"
+   },
+   {
+    "nl": "Ik snij de butternut.",
+    "en": "I cut the butternut.",
+    "image": "books/0067/05.jpg"
+   },
+   {
+    "nl": "Ik hak de spinazie.",
+    "en": "I chop the spinach.",
+    "image": "books/0067/06.jpg"
+   },
+   {
+    "nl": "Mijn moeder hakt de uien.",
+    "en": "My mom chops the onions.",
+    "image": "books/0067/07.jpg"
+   },
+   {
+    "nl": "Van gehakte uien moet ik huilen.",
+    "en": "Onions make me cry when they are chopped.",
+    "image": "books/0067/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#3bb8a0"
+ },
+ {
+  "id": "asp-0008",
+  "level": "g3",
+  "title": {
+   "nl": "Wat ben jij aan het doen?",
+   "en": "What are you doing?"
+  },
+  "cover": {},
+  "coverImage": "books/0008/cover.jpg",
+  "online": {
+   "sourceTitle": "What are you doing?",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7292",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Nina Orange",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0008/"
+  },
+  "pages": [
+   {
+    "nl": "Ik ben aan het zingen.",
+    "en": "I am singing.",
+    "image": "books/0008/01.jpg"
+   },
+   {
+    "nl": "Zij zwaait.",
+    "en": "She is waving.",
+    "image": "books/0008/02.jpg"
+   },
+   {
+    "nl": "Ik ben aan het klappen.",
+    "en": "I am clapping.",
+    "image": "books/0008/03.jpg"
+   },
+   {
+    "nl": "Zij strekt zich uit.",
+    "en": "She is stretching.",
+    "image": "books/0008/04.jpg"
+   },
+   {
+    "nl": "Hij roept.",
+    "en": "He is calling.",
+    "image": "books/0008/05.jpg"
+   },
+   {
+    "nl": "Ik geef antwoord.",
+    "en": "I am answering.",
+    "image": "books/0008/06.jpg"
+   },
+   {
+    "nl": "Zij luistert.",
+    "en": "She is listening.",
+    "image": "books/0008/07.jpg"
+   },
+   {
+    "nl": "Wat ben jij aan het doen?",
+    "en": "What are you doing?",
+    "image": "books/0008/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#4ea9e0"
+ },
+ {
+  "id": "asp-0009",
+  "level": "g3",
+  "title": {
+   "nl": "Waar is mijn poes?",
+   "en": "Where is my cat?"
+  },
+  "cover": {},
+  "coverImage": "books/0009/cover.jpg",
+  "online": {
+   "sourceTitle": "Where is my cat?",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1825",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Bronwen Heath, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0009/"
+  },
+  "pages": [
+   {
+    "nl": "Waar is mijn poes?",
+    "en": "Where is my cat?",
+    "image": "books/0009/01.jpg"
+   },
+   {
+    "nl": "Ligt poes onder het bed?",
+    "en": "Is it under the bed?",
+    "image": "books/0009/02.jpg"
+   },
+   {
+    "nl": "Zit poes boven op de kast?",
+    "en": "Is it on top of the cupboard?",
+    "image": "books/0009/03.jpg"
+   },
+   {
+    "nl": "Is poes achter de bankstel?",
+    "en": "Is it behind the couch?",
+    "image": "books/0009/04.jpg"
+   },
+   {
+    "nl": "Is poes naast de vuilnisbak?",
+    "en": "Is it next to the bin?",
+    "image": "books/0009/05.jpg"
+   },
+   {
+    "nl": "Is poes in de mand?",
+    "en": "Is it inside the basket?",
+    "image": "books/0009/06.jpg"
+   },
+   {
+    "nl": "Is poes buiten het huis?",
+    "en": "Is it outside the house?",
+    "image": "books/0009/07.jpg"
+   },
+   {
+    "nl": "Hier is poes!",
+    "en": "Here it is!",
+    "image": "books/0009/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#8a6fd1"
+ },
+ {
+  "id": "asp-0112",
+  "level": "g3",
+  "title": {
+   "nl": "Mijn lichaam",
+   "en": "My body"
+  },
+  "cover": {},
+  "coverImage": "books/0112/cover.jpg",
+  "online": {
+   "sourceTitle": "My body",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=1790",
+   "licence": "Creative Commons Attribution-NonCommercial 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by-nc/3.0/",
+   "author": "Clare Verbeek, Thembani Dladla, Zanele Buthelezi",
+   "illustrator": "Mlungisi Dlamini, Ingrid Schechter",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0112/"
+  },
+  "pages": [
+   {
+    "nl": "Ik kan ermee rennen.",
+    "en": "I can run with it.",
+    "image": "books/0112/01.jpg"
+   },
+   {
+    "nl": "Ik kan ermee springen.",
+    "en": "I can jump with it.",
+    "image": "books/0112/02.jpg"
+   },
+   {
+    "nl": "Ik kan ermee dansen.",
+    "en": "I can dance with it.",
+    "image": "books/0112/03.jpg"
+   },
+   {
+    "nl": "Ik kan ermee zwemmen.",
+    "en": "I can swim with it.",
+    "image": "books/0112/04.jpg"
+   },
+   {
+    "nl": "Ik kan ermee overspringen.",
+    "en": "I can skip with it.",
+    "image": "books/0112/05.jpg"
+   },
+   {
+    "nl": "Ik kan ermee trappen.",
+    "en": "I can kick with it.",
+    "image": "books/0112/06.jpg"
+   },
+   {
+    "nl": "Ik kan ermee ontsnappen.",
+    "en": "I can escape with it.",
+    "image": "books/0112/07.jpg"
+   },
+   {
+    "nl": "Maar ik kan er nooit mee vliegen.",
+    "en": "But I can never fly with it.",
+    "image": "books/0112/08.jpg"
+   }
+  ],
+  "avi": "AVI Start",
+  "shelf": "eerste",
+  "colour": "#c98d5c"
+ },
+ {
+  "id": "asp-0337",
+  "level": "g4",
+  "title": {
+   "nl": "Kinderen van was",
+   "en": "Children of wax"
+  },
+  "cover": {},
+  "coverImage": "books/0337/cover.jpg",
+  "online": {
+   "sourceTitle": "Children of wax",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=2181",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Southern African Folktale",
+   "illustrator": "Wiehan de Jager",
+   "translator": "Thomas Depoortere",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0337/"
+  },
+  "pages": [
+   {
+    "nl": "Er was eens een gelukkig gezin.",
+    "en": "Once upon a time, there lived a happy family.",
+    "image": "books/0337/01.jpg"
+   },
+   {
+    "nl": "Ze vochten nooit met elkaar. Ze hielpen hun ouders thuis en op het veld.",
+    "en": "They never fought with each other. They helped their parents at home and in the fields.",
+    "image": "books/0337/02.jpg"
+   },
+   {
+    "nl": "Maar ze mochten niet in de buurt van vuur komen.",
+    "en": "But they were not allowed to go near a fire.",
+    "image": "books/0337/03.jpg"
+   },
+   {
+    "nl": "Ze moesten all hun werk ‘s nachts doen. Want ze waren gemaakt van was!",
+    "en": "They had to do all their work during the night. Because they were made of wax!",
+    "image": "books/0337/04.jpg"
+   },
+   {
+    "nl": "Maar één van de jongens wilde naar buiten in het zonlicht.",
+    "en": "But one of the boys longed to go out in the sunlight.",
+    "image": "books/0337/05.jpg"
+   },
+   {
+    "nl": "Op een dag was het verlangen te sterk. Zijn broers waarschuwden hem…",
+    "en": "One day the longing was too strong. His brothers warned him…",
+    "image": "books/0337/06.jpg"
+   },
+   {
+    "nl": "Maar het was te laat! Hij smolt in de hete zon.",
+    "en": "But it was too late! He melted in the hot sun.",
+    "image": "books/0337/07.jpg"
+   },
+   {
+    "nl": "De wassen kinderen waren zo verdrietig toen ze hun broer zagen wegsmelten.",
+    "en": "The wax children were so sad to see their brother melting away.",
+    "image": "books/0337/08.jpg"
+   },
+   {
+    "nl": "Maar ze hadden een plan. Ze boetseerden de gesmolten was in de vorm van een vogel.",
+    "en": "But they made a plan. They shaped the lump of melted wax into a bird.",
+    "image": "books/0337/09.jpg"
+   },
+   {
+    "nl": "Ze namen hun vogelbroer mee naar een hoge berg.",
+    "en": "They took their bird brother up to a high mountain.",
+    "image": "books/0337/10.jpg"
+   },
+   {
+    "nl": "En toen de zon opkwam vloog hij zingend het morgenlicht in.",
+    "en": "And as the sun rose, he flew away singing into the morning light.",
+    "image": "books/0337/11.jpg"
+   }
+  ],
+  "avi": "AVI M4",
+  "shelf": "eerste",
+  "colour": "#e8862f"
+ },
+ {
+  "id": "asp-0210",
+  "level": "g4",
+  "title": {
+   "nl": "Ting-gi en de koeien",
+   "en": "Tingi and the cows"
+  },
+  "cover": {},
+  "coverImage": "books/0210/cover.jpg",
+  "online": {
+   "sourceTitle": "Tingi and the Cows",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=7441",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Ingrid Schechter",
+   "illustrator": "Ingrid Schechter",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0210/"
+  },
+  "pages": [
+   {
+    "nl": "Ting-gi leefde met zijn grootmoeder.",
+    "en": "Tingi lived with his grandmother.",
+    "image": "books/0210/01.jpg"
+   },
+   {
+    "nl": "Vroeger zorgde hij samen met haar voor de koeien.",
+    "en": "He used to look after the cows with her.",
+    "image": "books/0210/02.jpg"
+   },
+   {
+    "nl": "Op een dag kwamen de soldaten.",
+    "en": "One day the soldiers came.",
+    "image": "books/0210/03.jpg"
+   },
+   {
+    "nl": "Ze haalden de koeien weg.",
+    "en": "They took the cows away.",
+    "image": "books/0210/04.jpg"
+   },
+   {
+    "nl": "Ting-gi en zijn grootmoeder renden weg en verstopten zich.",
+    "en": "Tingi and his grandmother ran away and hid.",
+    "image": "books/0210/05.jpg"
+   },
+   {
+    "nl": "Ze verstopten zich in de bush tot het avond was.",
+    "en": "They hid in the bush until night.",
+    "image": "books/0210/06.jpg"
+   },
+   {
+    "nl": "Toen kwamen de soldaten terug.",
+    "en": "Then the soldiers came back.",
+    "image": "books/0210/07.jpg"
+   },
+   {
+    "nl": "Grootmoeder verstopte Ting-gi onder de bladeren.",
+    "en": "Grandmother hid Tingi under the leaves.",
+    "image": "books/0210/08.jpg"
+   },
+   {
+    "nl": "Een van de soldaten stond met zijn voet bovenop hem, maar hij hield zich stil.",
+    "en": "One of the soldiers put his foot right on him, but he kept quiet.",
+    "image": "books/0210/09.jpg"
+   },
+   {
+    "nl": "Toen het veilig was, kwamen Ting-gi en zijn grootmoeder tevoorschijn.",
+    "en": "When it was safe, Tingi and his grandmother came out.",
+    "image": "books/0210/10.jpg"
+   },
+   {
+    "nl": "Ze slopen heel zachtjes naar huis.",
+    "en": "They crept home very quietly.",
+    "image": "books/0210/11.jpg"
+   }
+  ],
+  "avi": "AVI M4",
+  "shelf": "eerste",
+  "colour": "#e8574f"
+ },
+ {
+  "id": "asp-0342",
+  "level": "g4",
+  "title": {
+   "nl": "Straf",
+   "en": "Punishment"
+  },
+  "cover": {},
+  "coverImage": "books/0342/cover.jpg",
+  "online": {
+   "sourceTitle": "Punishment",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=11989",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Adelheid Marie Bwire",
+   "illustrator": "Melany Pietersen",
+   "translator": "Sacha Kalseth",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0342/"
+  },
+  "pages": [
+   {
+    "nl": "Op een dag kreeg mama veel fruit.",
+    "en": "One day, mama got a lot of fruit.",
+    "image": "books/0342/01.jpg"
+   },
+   {
+    "nl": "Wij vragen “Wanneer mogen wij wat fruit krijgen?” “We gaan het fruit vanavond eten”, antwoorde mama.",
+    "en": "“When can we have some fruit?” we ask. “We will have the fruit tonight,” says mama.",
+    "image": "books/0342/02.jpg"
+   },
+   {
+    "nl": "Mijn broer Rahim is gulzig. Hij proeft al het fruit. Hij eet er veel van.",
+    "en": "My brother Rahim is greedy. He tastes all the fruit. He eats a lot of it.",
+    "image": "books/0342/03.jpg"
+   },
+   {
+    "nl": "“Kijk wat Rahim heeft gedaan!” schreeuwt mijn broertje. “Rahim is stout en egoïstisch”, zeg ik.",
+    "en": "“Look at what Rahim did!” shouts my little brother. “Rahim is naughty and selfish,” I say.",
+    "image": "books/0342/04.jpg"
+   },
+   {
+    "nl": "Moeder is boos op Rahim.",
+    "en": "Mother is angry with Rahim.",
+    "image": "books/0342/05.jpg"
+   },
+   {
+    "nl": "Wij zijn ook boos op Rahim. Maar Rahim heeft geen spijt.",
+    "en": "We are also angry with Rahim. But Rahim is not sorry.",
+    "image": "books/0342/06.jpg"
+   },
+   {
+    "nl": "“Ga je Rahim geen straf geven?” vraagt mijn broertje.",
+    "en": "“Aren’t you going to punish Rahim?” asks little brother.",
+    "image": "books/0342/07.jpg"
+   },
+   {
+    "nl": "“Rahim, je zult er snel spijt van hebben”, waarschuwt mama.",
+    "en": "“Rahim, soon you will be sorry,” warns mama.",
+    "image": "books/0342/08.jpg"
+   },
+   {
+    "nl": "Rahim begint zich misselijk te voelen.",
+    "en": "Rahim starts to feel sick.",
+    "image": "books/0342/09.jpg"
+   },
+   {
+    "nl": "“Ik heb zo een pijn in mijn buik”, fluisterd Rahim.",
+    "en": "“My tummy is so sore,” whispers Rahim.",
+    "image": "books/0342/10.jpg"
+   },
+   {
+    "nl": "Mama wist dat dit zou gebeuren. De fruit geeft Rahim straf!",
+    "en": "Mama knew this would happen. The fruit is punishing Rahim!",
+    "image": "books/0342/11.jpg"
+   },
+   {
+    "nl": "Rahim heeft later spijt. “Ik zal nooit meer zo gulzig zijn”, belooft hij. En we geloven hem allemaal.",
+    "en": "Later, Rahim says sorry to us. “I will never be so greedy again,” he promises. And we all believe him.",
+    "image": "books/0342/12.jpg"
+   }
+  ],
+  "avi": "AVI M4",
+  "shelf": "eerste",
+  "colour": "#ff7a1a"
+ },
+ {
+  "id": "asp-0001",
+  "level": "g4",
+  "title": {
+   "nl": "Een hele lange man",
+   "en": "A very tall man"
+  },
+  "cover": {},
+  "coverImage": "books/0001/cover.jpg",
+  "online": {
+   "sourceTitle": "A very tall man",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=918",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Cornelius Gulere",
+   "illustrator": "Catherine Groenewald",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0001/"
+  },
+  "pages": [
+   {
+    "nl": "Zijn schoffel was te kort.",
+    "en": "His hoe was too short.",
+    "image": "books/0001/01.jpg"
+   },
+   {
+    "nl": "Zijn deurpost was te laag.",
+    "en": "His doorway was too low.",
+    "image": "books/0001/02.jpg"
+   },
+   {
+    "nl": "Zijn bed was te kort.",
+    "en": "His bed was too short.",
+    "image": "books/0001/03.jpg"
+   },
+   {
+    "nl": "Zijn fiets was te klein.",
+    "en": "His bicycle was too short.",
+    "image": "books/0001/04.jpg"
+   },
+   {
+    "nl": "Deze man was te lang!",
+    "en": "This man was too tall!",
+    "image": "books/0001/05.jpg"
+   },
+   {
+    "nl": "Hij maakte een hele lange schoffelsteel.",
+    "en": "He made a very long hoe handle.",
+    "image": "books/0001/06.jpg"
+   },
+   {
+    "nl": "Hij maakte hele hoge deurposten.",
+    "en": "He made very high door frames.",
+    "image": "books/0001/07.jpg"
+   },
+   {
+    "nl": "Hij maakte een heel lang bed.",
+    "en": "He made a very long bed.",
+    "image": "books/0001/08.jpg"
+   },
+   {
+    "nl": "Hij kocht een hele grote fiets.",
+    "en": "He bought a very high bicycle.",
+    "image": "books/0001/09.jpg"
+   },
+   {
+    "nl": "Hij zat op een hele hoge stoel. Hij at met een hele lange vork.",
+    "en": "He sat on a very high chair. He ate with a very long fork.",
+    "image": "books/0001/10.jpg"
+   },
+   {
+    "nl": "Hij verliet zijn huis en ging in een groot bos wonen. Hij leefde nog vele jaren.",
+    "en": "He left his house and lived in a big forest. He lived for many years.",
+    "image": "books/0001/11.jpg"
+   }
+  ],
+  "avi": "AVI M4",
+  "shelf": "eerste",
+  "colour": "#16825a"
+ },
+ {
+  "id": "asp-0095",
+  "level": "g4",
+  "title": {
+   "nl": "Zama is geweldig!",
+   "en": "Zama is great!"
+  },
+  "cover": {},
+  "coverImage": "books/0095/cover.jpg",
+  "online": {
+   "sourceTitle": "Zama is great!",
+   "sourceUrl": "https://africanstorybook.org/reader.php?id=9984",
+   "licence": "Creative Commons Attribution 3.0 International License",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+   "author": "Michael Oguttu",
+   "illustrator": "Vusi Malindi",
+   "translator": "Esther Beugeling-Ford",
+   "readerUrl": "https://global-asp.github.io/storybooks-swahili/stories/nl/0095/"
+  },
+  "pages": [
+   {
+    "nl": "Mijn broertje ligt nog te slapen. Ik ben vroeg wakker want ik ben geweldig!",
+    "en": "My little brother sleeps very late. I wake early, because I am great!",
+    "image": "books/0095/01.jpg"
+   },
+   {
+    "nl": "Ik ben degene die de zon naar binnen laat schijnen.",
+    "en": "I am the one who lets in the sun.",
+    "image": "books/0095/02.jpg"
+   },
+   {
+    "nl": "“Jij bent mijn ochtendster,” zegt mamma.",
+    "en": "“You’re my morning star,” says Ma.",
+    "image": "books/0095/03.jpg"
+   },
+   {
+    "nl": "Ik was mezelf, daar heb ik geen hulp bij nodig.",
+    "en": "I wash myself, I don’t need any help.",
+    "image": "books/0095/04.jpg"
+   },
+   {
+    "nl": "Ik kan met koud water en blauwe stinkzeep overweg.",
+    "en": "I can cope with cold water and blue smelly soap.",
+    "image": "books/0095/05.jpg"
+   },
+   {
+    "nl": "Mamma zegt, “Vergeet je tanden niet te poetsen.” En ik antwoord, “Nee, dat vergeet ik nooit!”",
+    "en": "Ma reminds, “Don’t forget teeth.” I reply, “Never, not me!”",
+    "image": "books/0095/06.jpg"
+   },
+   {
+    "nl": "Na me gewassen te hebben, groet ik opa and tante en wens ik hen een fijne dag.",
+    "en": "After washing, I greet Grandpa and Auntie, and wish them a good day.",
+    "image": "books/0095/07.jpg"
+   },
+   {
+    "nl": "Daarna kleed ik mezelf aan. “Ik ben al groot, mamma,” zeg ik.",
+    "en": "Then I dress myself, “I’m big now Ma,” I say.",
+    "image": "books/0095/08.jpg"
+   },
+   {
+    "nl": "Ik kan mijn jurk dichtknopen en de gespen van mijn schoenen vastmaken.",
+    "en": "I can close my buttons and buckle my shoes.",
+    "image": "books/0095/09.jpg"
+   },
+   {
+    "nl": "En ik vertel mijn kleine broertje al het schoolnieuws.",
+    "en": "And I make sure little brother knows all the school news.",
+    "image": "books/0095/10.jpg"
+   },
+   {
+    "nl": "In de klas doe ik op allerlei manieren mijn best.",
+    "en": "In class I do my best in every way.",
+    "image": "books/0095/11.jpg"
+   },
+   {
+    "nl": "Elke dag doe ik al deze goede dingen. Maar wat ik het fijnste vind, is spelen en spelen!",
+    "en": "I do all these good things every day. But the thing I like most, is to play and play!",
+    "image": "books/0095/12.jpg"
+   }
+  ],
+  "avi": "AVI M4",
+  "shelf": "eerste",
+  "colour": "#3bb8a0"
+ }
+]
