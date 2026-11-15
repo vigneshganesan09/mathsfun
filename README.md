@@ -14,6 +14,8 @@ After **Start** (which also unlocks speech on iPad) you choose:
   think-time countdown, "Wie mag?" name picker, clicker keys (Space/Enter/→, R, N, F), podium.
   The answer can be typed into the box on the board (Enter or ✓ checks it) and choice options can be
   tapped; a right answer reveals it, a wrong one says "Bijna! Probeer nog eens".
+  **Bewaar als configuratie** saves the whole setup under a name; saved configurations appear at the top
+  of the setup screen (tap to load, ▶ to start at once, × to remove), kept on this device.
 - **Werken in je boek**: the app sends the child to a page in their own workbook, calls out the sums,
   optional focus timer, then checks against an answer key (or self-check) and keeps stars per page.
 - **Lezen**: straight to the library (after picking the child).

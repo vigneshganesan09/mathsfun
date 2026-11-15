@@ -6,13 +6,14 @@ import { SceneView, VisualView } from './pictures';
 import { chime, speak, speakable, speakText, stopSpeaking } from './speech';
 import { Beads } from './ui';
 import './klas.css';
+import { loadConfigs, removeConfig, sameSetup, saveConfig, type ClassConfig } from './klasConfigs';
 
 // ---------- setup ----------
 
 type TeamCount = 1 | 2 | 3;
 type Think = 0 | 10 | 20 | 30 | 60;
 
-interface ClassSetup {
+export interface ClassSetup {
   groepId: string;
   topicId: string;
   level: LevelNo;
@@ -335,13 +336,17 @@ export default function Klas({ onExit }: { onExit: () => void }) {
     setRound({ ...r, got: r.got.includes(t) ? r.got.filter((x) => x !== t) : [...r.got, t] });
   };
 
-  const start = () => {
-    const s = { ...setup, topicId: topic.id };
+  const start = (from?: ClassSetup) => {
+    const base = from ?? setup;
+    const g = GROEPEN.find((x) => x.id === base.groepId) ?? groep;
+    const t = g.topics.find((x) => x.id === base.topicId) ?? g.topics[0];
+    // Keep the names the teacher typed when a saved configuration has none.
+    const s = { ...base, topicId: t.id, names: base.names || setup.names };
     setSetup(s);
     const r: Round = {
-      topic,
+      topic: t,
       setup: s,
-      qs: makeQuestions(topic, s.level, s.count),
+      qs: makeQuestions(t, s.level, s.count),
       i: 0,
       phase: 'ask',
       endAt: 0,
@@ -525,9 +530,26 @@ function SetupView({
   setSetup: (s: ClassSetup) => void;
   topic: Topic;
   onBack: () => void;
-  onStart: () => void;
+  onStart: (s?: ClassSetup) => void;
 }) {
   const groep = GROEPEN.find((g) => g.id === setup.groepId) ?? GROEPEN[0];
+  const [configs, setConfigs] = useState<ClassConfig[]>(loadConfigs);
+  const [naming, setNaming] = useState<string | null>(null);
+  const [savedName, setSavedName] = useState('');
+  const suggest = `${groep.name.nl} · ${topic.name.nl} · niveau ${setup.level}`;
+  const doSave = () => {
+    const name = (naming ?? '').trim() || suggest;
+    setConfigs(saveConfig(name, { ...setup, topicId: topic.id }));
+    setNaming(null);
+    setSavedName(name);
+  };
+  const summary = (c: ClassSetup) => {
+    const g = GROEPEN.find((x) => x.id === c.groepId);
+    const t = g?.topics.find((x) => x.id === c.topicId) ?? g?.topics[0];
+    const think = c.think === 0 ? 'geen denktijd' : c.think === 60 ? '1 min' : `${c.think} s`;
+    const teams = c.teams === 1 ? 'hele klas' : `${c.teams} teams`;
+    return `${g?.name.nl ?? ''} · ${t?.name.nl ?? ''} · niveau ${c.level} · ${c.count} vragen · ${teams} · ${think}${c.en ? ' · NL+EN' : ''}`;
+  };
   const set = <K extends keyof ClassSetup>(k: K) => (v: ClassSetup[K]) => setSetup({ ...setup, [k]: v });
   return (
     <div className="kl kl-setup">
@@ -540,6 +562,32 @@ function SetupView({
           <p className="en">Classroom board · set up the lesson</p>
         </div>
       </header>
+
+      {configs.length > 0 && (
+        <div className="card kl-configs">
+          <h2 className="t-label">Mijn configuraties · My configurations</h2>
+          <div className="kl-config-list">
+            {configs.map((c) => {
+              const on = sameSetup(c.setup, { ...setup, topicId: topic.id });
+              return (
+                <div key={c.id} className={`kl-config ${on ? 'is-on' : ''}`}>
+                  <button className="kl-config-load" onClick={() => setSetup({ ...c.setup })} aria-pressed={on}>
+                    <span className="kl-config-name">{c.name}</span>
+                    <span className="kl-config-sum">{summary(c.setup)}</span>
+                  </button>
+                  <button className="btn btn-primary kl-config-go" onClick={() => onStart({ ...c.setup })} aria-label={`Start ${c.name}`}>
+                    <NextIcon size={26} />
+                  </button>
+                  <button className="kl-config-del" onClick={() => setConfigs(removeConfig(c.id))} aria-label={`Verwijder ${c.name} · Remove`}>
+                    ×
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <p className="en">Tik op een configuratie om hem te laden, of op ▶ om meteen te starten. · Tap to load, ▶ to start straight away.</p>
+        </div>
+      )}
 
       <div className="kl-setup-grid">
         <div className="card">
@@ -624,9 +672,55 @@ function SetupView({
         </div>
       </div>
 
-      <button className="btn btn-primary kl-start" onClick={onStart}>
-        Start de les · Start <NextIcon size={28} />
-      </button>
+      <div className="kl-start-row">
+        <button className="btn btn-primary kl-start" onClick={() => onStart()}>
+          Start de les · Start <NextIcon size={28} />
+        </button>
+        {naming === null ? (
+          <button
+            className="btn btn-secondary kl-save"
+            onClick={() => {
+              setNaming('');
+              setSavedName('');
+            }}
+          >
+            <StarIcon /> Bewaar als configuratie · Save as configuration
+          </button>
+        ) : (
+          <form
+            className="kl-save-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              doSave();
+            }}
+          >
+            <input
+              className="text-input"
+              autoFocus
+              value={naming}
+              maxLength={40}
+              placeholder={suggest}
+              aria-label="Naam van de configuratie · Configuration name"
+              onChange={(e) => setNaming(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setNaming(null);
+                e.stopPropagation();
+              }}
+            />
+            <button className="btn btn-primary" type="submit">
+              <CheckIcon /> Bewaren · Save
+            </button>
+            <button className="btn btn-secondary" type="button" onClick={() => setNaming(null)}>
+              Annuleren · Cancel
+            </button>
+          </form>
+        )}
+      </div>
+      {savedName && (
+        <p className="kl-saved" role="status">
+          <CheckIcon size={20} /> Bewaard als "{savedName}". · Saved.
+        </p>
+      )}
       <p className="kl-keys muted">
         Tip: zet het bord op volledig scherm. Spatie = volgende stap, R = nog eens voorlezen, N = Wie mag?, F = volledig scherm. · Space = next step, R = read
         again, N = pick a name, F = fullscreen.
