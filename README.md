@@ -84,6 +84,10 @@ offline after the first visit (downloaded books too).
 
 ### Lessen · Lessons
 
+When a child finishes a lesson (its "Nu jij!" story sums), the lesson is marked **Afgerond ·
+Closed** with the date and score, and its tile becomes **Opnieuw doen · Retake** (shown as
+"Herkansing" inside). Finishing **Leren** for a table in the Tafeltrainer closes it the same way.
+
 Four picture lessons, one idea per step, each read aloud in Dutch and English and ending with a
 5-question *Nu jij!* quiz:
 

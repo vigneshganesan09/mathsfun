@@ -27,8 +27,7 @@ import {
   saveStats,
   setActiveProfile,
   type Profile,
-  type Settings,
-} from './storage';
+  type Settings, lessonKey, markCompleted, tableLearnKey } from './storage';
 import { STORY_GROEP } from './stories';
 import Tables from './Tables';
 import TeacherPicker from './TeacherPicker';
@@ -190,6 +189,10 @@ export default function App() {
       levelStars = starsFor(result.points, result.maxPoints);
       newBest = saveLevelStars(topic.id, source.level, levelStars);
       if (!foundBefore && worldFound(topic)) beast = beastIndex(topic.id);
+    } else if (source.kind === 'quiz') {
+      markCompleted(lessonKey(source.lesson.id), result.correct, result.total);
+    } else if (source.kind === 'table' && source.mode === 'learn') {
+      markCompleted(tableLearnKey(source.table), result.correct, result.total);
     } else if (source.kind === 'table' && source.mode !== 'learn') {
       newBest = saveStars(tableScoreId(source.table, source.mode), 1, result.correct);
     }
@@ -312,7 +315,15 @@ export default function App() {
           result={screen.result}
           level={screen.source.kind === 'level' ? screen.source.level : undefined}
           levelStars={screen.levelStars}
-          subtitle={screen.source.kind === 'table' ? MODE_LABEL[screen.source.mode] : undefined}
+          subtitle={
+            screen.source.kind === 'table'
+              ? screen.source.mode === 'learn'
+                ? `${MODE_LABEL.learn} · afgerond / closed`
+                : MODE_LABEL[screen.source.mode]
+              : screen.source.kind === 'quiz'
+                ? 'Les afgerond · Lesson closed'
+                : undefined
+          }
           newBest={screen.newBest}
           stickers={screen.stickers}
           beast={screen.beast}

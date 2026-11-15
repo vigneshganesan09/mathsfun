@@ -165,6 +165,45 @@ export function saveStars(topicId: string, level: LevelNo, stars: number): boole
   return true;
 }
 
+// ---------- finished learning (lessons, table learning): closed, can be retaken ----------
+
+export interface Completed {
+  /** ISO date of the last time it was finished. */
+  at: string;
+  correct: number;
+  total: number;
+  /** How many times it was finished (1 = first time, more = retakes). */
+  times: number;
+}
+
+export const lessonKey = (id: string) => `lesson:${id}`;
+export const tableLearnKey = (t: string | number) => `table-learn:${t}`;
+
+export function loadCompleted(): Record<string, Completed> {
+  return read<Record<string, Completed>>(pkey('completed'), {});
+}
+
+export function getCompleted(key: string): Completed | undefined {
+  return loadCompleted()[key];
+}
+
+export function markCompleted(key: string, correct: number, total: number, today = new Date().toISOString().slice(0, 10)): Completed {
+  const all = loadCompleted();
+  const done: Completed = { at: today, correct, total, times: (all[key]?.times ?? 0) + 1 };
+  all[key] = done;
+  write(pkey('completed'), all);
+  return done;
+}
+
+/** "15 november" style date for the closed badge. */
+export function shortDate(iso: string): { nl: string; en: string } {
+  const d = new Date(`${iso}T12:00:00`);
+  return {
+    nl: d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' }),
+    en: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }),
+  };
+}
+
 // ---------- reading ----------
 
 export const loadReadingLevel = (): ReadingLevelId | null => read<ReadingLevelId | null>(pkey('readingLevel'), null);

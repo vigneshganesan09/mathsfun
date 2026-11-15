@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { BookIcon, MicIcon, NextIcon, PencilIcon } from './Icons';
+import { BookIcon, CheckIcon, MicIcon, NextIcon, PencilIcon, RetryIcon } from './Icons';
 import { Character } from './pictures';
-import { getStars, type Settings } from './storage';
+import { getCompleted, getStars, shortDate, tableLearnKey, type Settings } from './storage';
 import { TABLES, tableName, tableScoreId, type TableId, type TableMode } from './tableData';
 import { BiText, TopBar } from './ui';
 
@@ -55,6 +55,11 @@ export default function Tables({ settings, initial, onBack, onStart }: Props) {
             <button key={t} className={`tile table-tile ${sel === t ? 'is-current' : ''}`} aria-pressed={sel === t} onClick={() => setSel(t)}>
               <span className="table-num">{t}</span>
               <span className="t-label">tafel van {t}</span>
+              {getCompleted(tableLearnKey(t)) && (
+                <span className="learned t-label">
+                  <CheckIcon size={16} /> geleerd
+                </span>
+              )}
               <span className="table-scores">
                 <Score t={t} mode="write" />
                 <Score t={t} mode="say" />
@@ -77,16 +82,24 @@ export default function Tables({ settings, initial, onBack, onStart }: Props) {
           <h2 className="t-title">{tableName(sel).nl}</h2>
           {en && <p className="en">{tableName(sel).en}</p>}
           <div className="mode-list">
-            {sel !== 'mix' && (
-              <button className="tile mode-tile" onClick={() => onStart(sel, 'learn')}>
-                <BookIcon size={32} />
-                <span>
-                  <span className="t-title">Leren</span>
-                  <span className="en">Learn · stap voor stap, met plaatjes en hints</span>
-                </span>
-                <NextIcon />
-              </button>
-            )}
+            {sel !== 'mix' &&
+              (() => {
+                const done = getCompleted(tableLearnKey(sel));
+                return (
+                  <button className={`tile mode-tile ${done ? 'is-closed' : ''}`} onClick={() => onStart(sel, 'learn')}>
+                    {done ? <CheckIcon size={32} /> : <BookIcon size={32} />}
+                    <span>
+                      <span className="t-title">{done ? 'Leren · afgerond' : 'Leren'}</span>
+                      <span className="en">
+                        {done
+                          ? `Closed on ${shortDate(done.at).en} · ${done.correct}/${done.total} · tik om opnieuw te leren / tap to retake`
+                          : 'Learn · stap voor stap, met plaatjes en hints'}
+                      </span>
+                    </span>
+                    {done ? <RetryIcon /> : <NextIcon />}
+                  </button>
+                );
+              })()}
             <button className="tile mode-tile" onClick={() => onStart(sel, 'write')}>
               <PencilIcon size={32} />
               <span>

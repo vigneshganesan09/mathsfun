@@ -4,7 +4,7 @@ import { BackIcon, CheckIcon, NextIcon, RetryIcon } from './Icons';
 import { LESSONS, type Lesson, type Slide } from './lessonData';
 import { Character, ItemPic, SceneView } from './pictures';
 import { chime } from './speech';
-import type { Settings } from './storage';
+import { getCompleted, lessonKey, shortDate, type Settings } from './storage';
 import { BiText, NumberPad, TopBar, useTypedKeys } from './ui';
 
 export function LessonList({ settings, onBack, onOpen }: { settings: Settings; onBack: () => void; onOpen: (l: Lesson) => void }) {
@@ -20,16 +20,36 @@ export function LessonList({ settings, onBack, onOpen }: { settings: Settings; o
         }
       />
       <div className="lesson-grid">
-        {LESSONS.map((l) => (
-          <button key={l.id} className="tile lesson-tile" onClick={() => onOpen(l)}>
-            <span className="lesson-pic">
-              <ItemPic item={l.icon} size={48} />
-            </span>
-            <span className="t-title">{l.name.nl}</span>
-            {settings.english !== 'hidden' && <span className="en">{l.name.en}</span>}
-            <span className="t-label muted">{l.slides.length} stapjes · steps</span>
-          </button>
-        ))}
+        {LESSONS.map((l) => {
+          const done = getCompleted(lessonKey(l.id));
+          return (
+            <button key={l.id} className={`tile lesson-tile ${done ? 'is-closed' : ''}`} onClick={() => onOpen(l)}>
+              {done && (
+                <span className="closed-badge t-label">
+                  <CheckIcon size={18} /> Afgerond · Closed
+                </span>
+              )}
+              <span className="lesson-pic">
+                <ItemPic item={l.icon} size={48} />
+              </span>
+              <span className="t-title">{l.name.nl}</span>
+              {settings.english !== 'hidden' && <span className="en">{l.name.en}</span>}
+              {done ? (
+                <>
+                  <span className="t-label muted">
+                    {shortDate(done.at).nl} · {done.correct} van {done.total} goed
+                    {done.times > 1 ? ` · ${done.times}× gedaan` : ''}
+                  </span>
+                  <span className="retake t-label">
+                    <RetryIcon size={20} /> Opnieuw doen · Retake
+                  </span>
+                </>
+              ) : (
+                <span className="t-label muted">{l.slides.length} stapjes · steps</span>
+              )}
+            </button>
+          );
+        })}
       </div>
     </section>
   );
@@ -121,6 +141,7 @@ interface PlayerProps {
 }
 
 export function LessonPlayer({ lesson, settings, onBack, onQuiz, onTrainer }: PlayerProps) {
+  const [retake] = useState(() => !!getCompleted(lessonKey(lesson.id)));
   const [step, setStep] = useState(0);
   const [answered, setAnswered] = useState<Set<number>>(() => new Set());
   const last = lesson.slides.length; // one extra "Nu jij!" step at the end
@@ -139,6 +160,7 @@ export function LessonPlayer({ lesson, settings, onBack, onQuiz, onTrainer }: Pl
         title={
           <>
             <h1 className="t-title">{lesson.name.nl}</h1>
+            {retake && <p className="t-label muted">Herkansing · Retake</p>}
             <div className="dots" aria-label={`Stap ${step + 1} van ${last + 1}`}>
               {Array.from({ length: last + 1 }, (_, i) => (
                 <span key={i} className={`dot ${i === step ? 'is-now' : i < step ? 'is-done' : ''}`} />

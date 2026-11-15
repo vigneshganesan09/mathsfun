@@ -2142,3 +2142,13 @@ button:disabled {
   display: flex;
   align-items: flex-end;
 }
+
+/* ---------- finished learning: closed, can be retaken ---------- */
+.lesson-tile.is-closed, .mode-tile.is-closed { position: relative; border-color: var(--correct); box-shadow: 0 4px 0 var(--correct); }
+.closed-badge {
+  position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 4px;
+  background: var(--correct); color: #fff; border: 2px solid var(--ink); border-radius: var(--radius-pill); padding: 2px 10px;
+}
+.retake { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-2); padding: 6px 14px; border: 2px solid var(--ink); border-radius: var(--radius-pill); background: var(--brand); color: var(--ink); }
+.learned { display: inline-flex; align-items: center; gap: 2px; color: var(--correct); }
+.mode-tile.is-closed > svg:first-child { color: var(--correct); }
