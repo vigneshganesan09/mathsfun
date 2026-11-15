@@ -595,3 +595,15 @@
     transition: none !important;
   }
 }
+
+/* Typing the answer on the board */
+.kl-input-wrap { display: inline-flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; justify-content: center; vertical-align: middle; }
+.kl-input { font: inherit; color: var(--ink); width: 3.2em; min-width: 3.2em; text-align: center; outline: none; }
+.kl-input:focus { border-style: solid; border-color: var(--brand); box-shadow: 0 0 0 4px rgba(255, 122, 26, 0.25); }
+.kl-input.is-retry { background: var(--try-again); border-style: solid; }
+.kl-check { min-width: 72px; min-height: 72px; padding: 0; border-radius: 50%; }
+.kl-retry { flex-basis: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-text); font-size: 22px; line-height: 28px; font-weight: 800; color: var(--ink); }
+button.kl-opt { color: inherit; text-align: left; cursor: pointer; width: 100%; }
+button.kl-opt:active:not(:disabled) { transform: translateY(4px); box-shadow: none; }
+button.kl-opt:disabled { cursor: default; }
+.kl-opt.is-tried { background: var(--try-again); box-shadow: none; }

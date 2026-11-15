@@ -469,7 +469,7 @@ export default function Klas({ onExit }: { onExit: () => void }) {
         </button>
       </header>
 
-      <Board round={round} />
+      <Board key={round.i} round={round} onRight={() => round.phase !== 'reveal' && reveal(round)} />
 
       <PhaseBar round={round} now={now} onAdvance={advance} onToggle={toggleGot} />
 
@@ -667,10 +667,65 @@ function Pictures({ q }: { q: Question }) {
   );
 }
 
-function AnswerSlot({ q, shown }: { q: Question; shown: boolean }) {
+/** Read a typed answer: comma or point decimals, "€ 12", "1.000" (Dutch thousands). */
+export function typedNumber(raw: string): number | null {
+  let t = raw.trim().replace(/^€\s*/, '').replace(/\s+/g, '').replace(/−/g, '-');
+  if (/^-?\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+  t = t.replace(',', '.');
+  if (!/^-?\d+(\.\d+)?$/.test(t)) return null;
+  return Number(t);
+}
+
+const isRight = (q: Question, raw: string) => {
+  const n = typedNumber(raw);
+  return n !== null && Math.abs(n - q.answer) < 1e-9;
+};
+
+/** The answer box on the board: type the answer, Enter or Check checks it. */
+function AnswerInput({ q, onRight }: { q: Question; onRight: () => void }) {
+  const [value, setValue] = useState('');
+  const [wrong, setWrong] = useState(false);
+  const check = () => {
+    if (!value.trim()) return;
+    if (isRight(q, value)) onRight();
+    else setWrong(true);
+  };
+  return (
+    <span className="kl-input-wrap">
+      <input
+        className={`answer-box kl-box kl-input ${wrong ? 'is-retry' : ''}`}
+        value={value}
+        inputMode={q.decimals ? 'decimal' : 'numeric'}
+        autoComplete="off"
+        aria-label="Typ het antwoord · Type the answer"
+        onChange={(e) => {
+          setValue(e.target.value.replace(/[^0-9,.\-−€ ]/g, '').slice(0, 9));
+          setWrong(false);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            check();
+          }
+          e.stopPropagation();
+        }}
+      />
+      <button className="btn btn-primary kl-check" onClick={check} disabled={!value.trim()} aria-label="Nakijken · Check">
+        <CheckIcon size={36} />
+      </button>
+      {wrong && (
+        <span className="kl-retry" role="status">
+          <RetryIcon size={28} /> Bijna! Probeer nog eens. · Almost! Try again.
+        </span>
+      )}
+    </span>
+  );
+}
+
+function AnswerSlot({ q, shown, onRight }: { q: Question; shown: boolean; onRight: () => void }) {
   const pre = q.unit === '€' ? '€ ' : '';
   const post = q.unit && q.unit !== '€' ? ` ${q.unit}` : '';
-  if (!shown) return <span className="answer-box kl-box" aria-label="antwoord · answer" />;
+  if (!shown) return <AnswerInput q={q} onRight={onRight} />;
   return (
     <span className="answer-box is-correct kl-box kl-ans">
       <CheckIcon size={48} />
@@ -681,7 +736,8 @@ function AnswerSlot({ q, shown }: { q: Question; shown: boolean }) {
   );
 }
 
-function Board({ round }: { round: Round }) {
+function Board({ round, onRight }: { round: Round; onRight: () => void }) {
+  const [picked, setPicked] = useState<number[]>([]);
   const q = round.qs[round.i];
   const en = round.setup.en;
   const rev = round.phase === 'reveal';
@@ -703,14 +759,14 @@ function Board({ round }: { round: Round }) {
     sum = (
       <div className={`kl-sum ${long ? 'is-long' : ''}`} aria-live="polite">
         {before && <span>{before.trim()}</span>}
-        <AnswerSlot q={q} shown={rev} />
+        <AnswerSlot q={q} shown={rev} onRight={onRight} />
         {after && <span>{after.trim()}</span>}
       </div>
     );
-  } else if (!isChoice && rev) {
+  } else if (!isChoice) {
     sum = (
       <div className="kl-sum" aria-live="polite">
-        <AnswerSlot q={q} shown />
+        <AnswerSlot q={q} shown={rev} onRight={onRight} />
       </div>
     );
   }
@@ -719,14 +775,20 @@ function Board({ round }: { round: Round }) {
     <div className={`kl-opts ${hasPic ? 'is-one' : ''}`}>
       {q.options!.map((o, j) => {
         const right = rev && j === q.answer;
+        const tried = !rev && picked.includes(j);
         return (
-          <div key={j} className={`kl-opt ${right ? 'is-right' : ''} ${rev && !right ? 'is-dim' : ''}`}>
-            <span className="kl-letter">{right ? <CheckIcon size={44} /> : LETTERS[j]}</span>
+          <button
+            key={j}
+            className={`kl-opt ${right ? 'is-right' : ''} ${rev && !right ? 'is-dim' : ''} ${tried ? 'is-tried' : ''}`}
+            disabled={rev || tried}
+            onClick={() => (j === q.answer ? onRight() : setPicked((p) => [...p, j]))}
+          >
+            <span className="kl-letter">{right ? <CheckIcon size={44} /> : tried ? <RetryIcon size={40} /> : LETTERS[j]}</span>
             <span className="kl-opt-text">
               {o.nl}
               {en && o.en && <small className="en">{o.en}</small>}
             </span>
-          </div>
+          </button>
         );
       })}
     </div>

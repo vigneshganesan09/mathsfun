@@ -12,6 +12,8 @@ After **Start** (which also unlocks speech on iPad) you choose:
   groep) with their own progress, settings, stickers and streak.
 - **Klas · digibord**: the teacher drives a big board: groep, topic, level, 5/10/15 questions, teams,
   think-time countdown, "Wie mag?" name picker, clicker keys (Space/Enter/→, R, N, F), podium.
+  The answer can be typed into the box on the board (Enter or ✓ checks it) and choice options can be
+  tapped; a right answer reveals it, a wrong one says "Bijna! Probeer nog eens".
 - **Werken in je boek**: the app sends the child to a page in their own workbook, calls out the sums,
   optional focus timer, then checks against an answer key (or self-check) and keeps stars per page.
 - **Lezen**: straight to the library (after picking the child).
