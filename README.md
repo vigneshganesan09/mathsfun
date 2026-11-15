@@ -182,6 +182,12 @@ All questions are typed on the number pad for now. The design's other question t
 drag-to-match, number line, clock, coins, fraction pizza) and the domains that need them
 (Verhoudingen, Meten & Meetkunde, Verbanden) are still to come.
 
+## Deploy
+
+Every push to `main` runs `.github/workflows/deploy.yml`: type check, tests, build, then the
+site is pushed to the `gh-pages` branch, which GitHub Pages serves at
+https://vigneshganesan09.github.io/mathsfun/.
+
 ## Getting started
 
 ```bash
