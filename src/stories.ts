@@ -173,6 +173,70 @@ const PARTY: Times[] = [
   },
 ];
 
+/** Two steps: three groups added together, or two lots taken away. */
+type TwoStep = (a: number, b: number, c: number) => Told;
+
+const BAKERY_ADD3: TwoStep[] = [
+  (a, b, c) => ({
+    text: {
+      nl: `Opa bakt ${a} broodjes. Daarna bakt hij er nog ${b}, en Noor bakt er ${c}. Hoeveel broodjes zijn er samen?`,
+      en: `Grandpa bakes ${a} rolls. Then he bakes ${b} more, and Noor bakes ${c}. How many rolls are there altogether?`,
+    },
+    scene: { item: 'roll', groups: [a, b, c], join: '+', container: 'basket' },
+  }),
+  (a, b, c) => ({
+    text: {
+      nl: `Noor versiert ${a} cupcakes met roze room, ${b} met witte en ${c} met gele. Hoeveel cupcakes zijn er versierd?`,
+      en: `Noor decorates ${a} cupcakes with pink cream, ${b} with white and ${c} with yellow. How many cupcakes are decorated?`,
+    },
+    scene: { item: 'cupcake', groups: [a, b, c], join: '+' },
+  }),
+];
+
+const BAKERY_SUB2: TwoStep[] = [
+  (a, b, c) => ({
+    text: {
+      nl: `In de vitrine staan ${a} cupcakes. 's Ochtends worden er ${b} verkocht en 's middags nog ${c}. Hoeveel cupcakes staan er nog?`,
+      en: `There are ${a} cupcakes in the shop window. ${b} are sold in the morning and ${c} more in the afternoon. How many cupcakes are left?`,
+    },
+    scene: { item: 'cupcake', groups: [a], gone: b + c },
+  }),
+  (a, b, c) => ({
+    text: {
+      nl: `Opa bakt ${a} stroopwafels. Sam eet er ${b} op en Pip de hond pikt er ${c}. Hoeveel stroopwafels zijn er nog?`,
+      en: `Grandpa bakes ${a} stroopwafels. Sam eats ${b} and Pip the dog grabs ${c}. How many stroopwafels are left?`,
+    },
+    scene: { item: 'stroopwafel', groups: [a], gone: b + c },
+  }),
+];
+
+const TRAIN_ADD3: TwoStep[] = [
+  (a, b, c) => ({
+    text: {
+      nl: `In de trein zitten ${a} mensen. In Utrecht stappen er ${b} in en in Amersfoort nog ${c}. Hoeveel mensen zitten er nu in de trein?`,
+      en: `There are ${a} people on the train. In Utrecht ${b} get on and in Amersfoort ${c} more. How many people are on the train now?`,
+    },
+    scene: { item: 'person', groups: [a, b, c], join: '+', container: 'car' },
+  }),
+  (a, b, c) => ({
+    text: {
+      nl: `Sam telt ${a} mensen in wagon 1, ${b} in wagon 2 en ${c} in wagon 3. Hoeveel mensen zijn het samen?`,
+      en: `Sam counts ${a} people in carriage 1, ${b} in carriage 2 and ${c} in carriage 3. How many people is that altogether?`,
+    },
+    scene: { item: 'person', groups: [a, b, c], join: '+', container: 'car' },
+  }),
+];
+
+const TRAIN_SUB2: TwoStep[] = [
+  (a, b, c) => ({
+    text: {
+      nl: `In de trein zitten ${a} mensen. In Utrecht stappen er ${b} uit en in Amersfoort nog ${c}. Hoeveel mensen reizen er mee naar Almere?`,
+      en: `There are ${a} people on the train. In Utrecht ${b} get off and in Amersfoort ${c} more. How many people travel on to Almere?`,
+    },
+    scene: { item: 'person', groups: [a], gone: b + c, container: 'car' },
+  }),
+];
+
 // ---------- turning a story line into a question ----------
 
 function addSubQuestion(told: Told, a: number, op: '+' | '-', b: number): Question {
@@ -199,9 +263,11 @@ function jumps(n: number, g: number): string {
   return Array.from({ length: Math.min(g, 3) }, (_, i) => (i + 1) * n).join(', ');
 }
 
-function timesQuestion(rng: Rng, lines: Times[], g: number, n: number): Question {
+/** `fixedG` (levels 4–5): how many there are for the always-2 lines (ducks, bikes), so those aren't too easy. */
+function timesQuestion(rng: Rng, lines: Times[], g0: number, n: number, fixedG?: (rng: Rng) => number): Question {
   const line = pick(rng, lines);
   const size = line.fixedN ?? n;
+  const g = line.fixedN && fixedG ? fixedG(rng) : g0;
   const told = line.tell(g, size);
   return {
     text: told.text,
@@ -235,6 +301,41 @@ function addSubWithin(rng: Rng, max: number, addLines: AddSub[], subLines: AddSu
   return addSubQuestion(pick(rng, subLines)(a, b), a, '-', b);
 }
 
+/** Two-step stories within `max`, every number at least 2. */
+function twoStepWithin(rng: Rng, max: number, add3: TwoStep[], sub2: TwoStep[]): Question {
+  const add = coin(rng);
+  let a: number, b: number, c: number;
+  if (add) {
+    a = randInt(rng, 2, max - 4);
+    b = randInt(rng, 2, max - a - 2);
+    c = randInt(rng, 2, max - a - b);
+  } else {
+    a = randInt(rng, 7, max);
+    b = randInt(rng, 2, a - 3);
+    c = randInt(rng, 2, a - 1 - b);
+  }
+  const told = pick(rng, add ? add3 : sub2)(a, b, c);
+  return {
+    text: told.text,
+    expr: BOX,
+    speak: told.text,
+    answer: add ? a + b + c : a - b - c,
+    scene: told.scene,
+    hint: add
+      ? { nl: `Reken in twee stappen: eerst ${a} + ${b}, en daar dan ${c} bij.`, en: `Work it out in two steps: first ${a} + ${b}, then add ${c}.` }
+      : {
+          nl: `Reken in twee stappen: eerst ${a} − ${b}, en daar dan nog ${c} af. Of tel de plaatjes die over zijn.`,
+          en: `Work it out in two steps: first ${a} − ${b}, then take away ${c} more. Or count the pictures that are left.`,
+        },
+  };
+}
+
+/** Times stories from a list of [groups, size] pairs (all at most 40 things, so the picture stays countable). */
+function timesFrom(rng: Rng, lines: Times[], pairs: [number, number][], fixedMax: number): Question {
+  const [g, n] = pick(rng, pairs);
+  return timesQuestion(rng, lines, g, n, (r) => randInt(r, fixedMax - 6, fixedMax));
+}
+
 // ---------- the story worlds ----------
 
 const bakkerij: Topic = {
@@ -246,7 +347,11 @@ const bakkerij: Topic = {
     nl: 'Noor helpt vandaag in de bakkerij van opa. Er wordt gebakken, verkocht en gesnoept! Pip de hond kijkt ook mee. Help jij Noor met tellen?',
     en: "Noor is helping in Grandpa's bakery today. There's baking, selling and snacking! Pip the dog is watching too. Will you help Noor count?",
   },
-  make: (level, rng) => addSubWithin(rng, [10, 15, 20][level - 1], BAKERY_ADD, BAKERY_SUB),
+  make: (level, rng) => {
+    if (level <= 3) return addSubWithin(rng, [10, 15, 20][level - 1], BAKERY_ADD, BAKERY_SUB);
+    if (level === 4) return rng() < 0.65 ? addSubWithin(rng, 30, BAKERY_ADD, BAKERY_SUB) : twoStepWithin(rng, 20, BAKERY_ADD3, BAKERY_SUB2);
+    return rng() < 0.65 ? twoStepWithin(rng, 40, BAKERY_ADD3, BAKERY_SUB2) : addSubWithin(rng, 40, BAKERY_ADD, BAKERY_SUB);
+  },
 };
 
 const trein: Topic = {
@@ -258,7 +363,11 @@ const trein: Topic = {
     nl: 'Sam reist met de trein naar Almere. Bij elk station stappen er mensen in of uit. Tel jij mee hoeveel mensen er in de trein zitten?',
     en: 'Sam is taking the train to Almere. At every station people get on or off. Will you help count how many people are on the train?',
   },
-  make: (level, rng) => addSubWithin(rng, [10, 20, 30][level - 1], TRAIN_ADD, TRAIN_SUB),
+  make: (level, rng) => {
+    if (level <= 3) return addSubWithin(rng, [10, 20, 30][level - 1], TRAIN_ADD, TRAIN_SUB);
+    if (level === 4) return rng() < 0.6 ? addSubWithin(rng, 40, TRAIN_ADD, TRAIN_SUB) : twoStepWithin(rng, 30, TRAIN_ADD3, TRAIN_SUB2);
+    return rng() < 0.7 ? twoStepWithin(rng, 40, TRAIN_ADD3, TRAIN_SUB2) : addSubWithin(rng, 40, TRAIN_ADD, TRAIN_SUB);
+  },
 };
 
 const boerderij: Topic = {
@@ -273,7 +382,9 @@ const boerderij: Topic = {
   make: (level, rng) => {
     if (level === 1) return timesQuestion(rng, FARM, randInt(rng, 2, 4), pick(rng, [2, 3, 5]));
     if (level === 2) return timesQuestion(rng, FARM, randInt(rng, 2, 5), randInt(rng, 3, 6));
-    return timesQuestion(rng, FARM, randInt(rng, 3, 6), randInt(rng, 4, 6));
+    if (level === 3) return timesQuestion(rng, FARM, randInt(rng, 3, 6), randInt(rng, 4, 6));
+    if (level === 4) return timesFrom(rng, FARM, [[4, 7], [5, 7], [3, 7], [3, 8], [4, 8], [7, 4], [7, 5], [8, 4]], 14);
+    return timesFrom(rng, FARM, [[4, 9], [3, 9], [5, 8], [4, 8], [8, 5], [9, 4], [7, 5], [5, 7], [8, 4]], 20);
   },
 };
 
@@ -292,7 +403,9 @@ const feest: Topic = {
       return timesQuestion(rng, PARTY, randInt(rng, 2, n === 10 ? 3 : 5), n);
     }
     if (level === 2) return timesQuestion(rng, PARTY, randInt(rng, 2, 6), pick(rng, [3, 4]));
-    return timesQuestion(rng, PARTY, randInt(rng, 2, 4), pick(rng, [6, 7, 8]));
+    if (level === 3) return timesQuestion(rng, PARTY, randInt(rng, 2, 4), pick(rng, [6, 7, 8]));
+    if (level === 4) return timesFrom(rng, PARTY, [[5, 6], [5, 7], [3, 9], [4, 9], [6, 6], [4, 7], [4, 8]], 14);
+    return timesFrom(rng, PARTY, [[5, 7], [5, 8], [4, 9], [3, 9], [7, 5], [8, 5], [9, 4], [6, 6]], 20);
   },
 };
 

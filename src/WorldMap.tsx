@@ -1,4 +1,4 @@
-import { DOMAIN_NAME, LEVELS, type Groep, type LevelNo, type Topic } from './core';
+import { DOMAIN_NAME, LEVEL_NAME, LEVELS, type Groep, type LevelNo, type Topic } from './core';
 import { LockIcon, ParentIcon, PinIcon, StarIcon } from './Icons';
 import { ItemPic } from './pictures';
 import { UNLOCK_STARS } from './scoring';
@@ -130,6 +130,7 @@ export default function WorldMap({ groep, settings, onBack, onParents, onPlay }:
                       aria-label={locked ? `Level ${level}, op slot: haal eerst 1 ster` : `Level ${level}, ${stars ?? 0} van 3 sterren`}
                     >
                       <span className="t-label">Level {level}</span>
+                      <span className="level-name">{LEVEL_NAME[level].nl}</span>
                       {locked ? (
                         <>
                           <LockIcon />

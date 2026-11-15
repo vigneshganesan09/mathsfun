@@ -40,6 +40,14 @@ look, a female or male device voice where available, their own pitch and pace, a
 and try-again lines. Children can tap Luister (NL/EN) to hear each one before choosing. A voice the
 parent picks in the parents screen still wins; "Automatisch" lets the teacher choose.
 
+### Levels
+
+Every world has **5 levels**: 1 Makkelijk, 2 Oefenen, 3 Goed bezig, 4 Lastig, 5 Kampioen. One star
+opens the next level. Levels 4–5 add missing-number sums (a + □ = c), two-step sums, number stories,
+bigger numbers and, per topic, things like reading the clock to the minute, "over 20 minuten",
+equivalent fractions, missing sides from perimeter/area and finding the scale. A star on any level 5
+earns the **Kampioen** sticker; "Wereld klaar" still means levels 1–3.
+
 ## Scoring and review (spec §5, §9, §10)
 
 - 3 points first try, 2 second try, 1 after the hint, 0 when revealed (with a worked solution; the
@@ -163,7 +171,7 @@ taps the words that went wrong.
 ### Oefenen · Practice
 
 - **Groep → world → level.** Pick your groep (1–2 to 8); each groep has worlds on a map, each world
-  has 3 levels of 10 questions. A level unlocks once the one before it is played.
+  has 5 levels of 10 questions. A level unlocks once the one before it is played.
 - **Dutch first, English one tap away.** Every question, hint and message is stored in both
   languages. Parents choose: English always shown, on tap (default) or hidden.
 - **Read-aloud.** Blue NL / EN speaker buttons on every question, hint and message, using the

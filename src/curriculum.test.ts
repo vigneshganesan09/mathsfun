@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BOX, fmtEn, fmtNl, GROEPEN, LEVELS, makeLevel, QUESTIONS_PER_LEVEL, type Question } from './curriculum';
+import { BOX, fmtEn, fmtNl, GROEPEN, LEVELS, makeLevel, QUESTIONS_PER_LEVEL, type LevelNo, type Question } from './curriculum';
 import { LESSONS } from './lessonData';
 import { LESSON_QUIZ, STORY_GROEP } from './stories';
 import { learnQuestions, TABLES, testQuestions } from './tableData';
@@ -10,18 +10,45 @@ const NUM = '(−?[\\d.,]+)';
 
 /** Work out the answer from what the child sees, so the display can't drift from the answer. */
 function solveFromScreen(q: Question): number | undefined {
-  let m = q.expr.match(new RegExp(`^${NUM} ([+−×:]) ${NUM} = ${BOX}$`));
-  if (m) {
-    const a = parse(m[1]);
-    const b = parse(m[3]);
-    return { '+': a + b, '−': a - b, '×': a * b, ':': a / b }[m[2]];
+  const ops: Record<string, (a: number, b: number) => number> = {
+    '+': (a, b) => a + b,
+    '−': (a, b) => a - b,
+    '×': (a, b) => a * b,
+    ':': (a, b) => a / b,
+  };
+  // The inverse: which number x makes x op b = c, or a op x = c?
+  const first: Record<string, (b: number, c: number) => number> = {
+    '+': (b, c) => c - b,
+    '−': (b, c) => c + b,
+    '×': (b, c) => c / b,
+    ':': (b, c) => c * b,
+  };
+  const second: Record<string, (a: number, c: number) => number> = {
+    '+': (a, c) => c - a,
+    '−': (a, c) => a - c,
+    '×': (a, c) => c / a,
+    ':': (a, c) => a / c,
+  };
+  const OP = '([+−×:])';
+  let m = q.expr.match(new RegExp(`^${NUM} ${OP} ${NUM} = ${BOX}$`));
+  if (m) return ops[m[2]](parse(m[1]), parse(m[3]));
+  if ((m = q.expr.match(new RegExp(`^${NUM} ${OP} ${NUM} ${OP} ${NUM} = ${BOX}$`)))) {
+    const [a, b, c] = [parse(m[1]), parse(m[3]), parse(m[5])];
+    // Normal order of operations: × and : before + and −.
+    if ('×:'.includes(m[4]) && '+−'.includes(m[2])) return ops[m[2]](a, ops[m[4]](b, c));
+    return ops[m[4]](ops[m[2]](a, b), c);
   }
+  if ((m = q.expr.match(new RegExp(`^${BOX} ${OP} ${NUM} = ${NUM}$`)))) return first[m[1]](parse(m[2]), parse(m[3]));
+  if ((m = q.expr.match(new RegExp(`^${NUM} ${OP} ${BOX} = ${NUM}$`)))) return second[m[2]](parse(m[1]), parse(m[3]));
   if ((m = q.expr.match(new RegExp(`^${NUM} = ${NUM} \\+ ${BOX}$`)))) return parse(m[1]) - parse(m[2]);
+  if ((m = q.expr.match(new RegExp(`^${NUM} = ${BOX} \\+ ${NUM}$`)))) return parse(m[1]) - parse(m[2]);
   if ((m = q.expr.match(new RegExp(`^${NUM}, ${BOX}$`)))) return parse(m[1]) + 1;
   if ((m = q.expr.match(new RegExp(`^${BOX}, ${NUM}$`)))) return parse(m[1]) - 1;
+  if ((m = q.expr.match(new RegExp(`^${NUM}, ${BOX}, ${NUM}$`)))) return parse(m[1]) + 1;
+  if ((m = q.expr.match(new RegExp(`^${NUM}, ${NUM}, ${NUM}, ${BOX}$`)))) return 2 * parse(m[3]) - parse(m[2]);
   if ((m = q.expr.match(new RegExp(`^(\\d+)% van ${NUM} = ${BOX}$`)))) return (parse(m[2]) * Number(m[1])) / 100;
+  if ((m = q.expr.match(new RegExp(`^${BOX}% van ${NUM} = ${NUM}$`)))) return (parse(m[2]) / parse(m[1])) * 100;
   if ((m = q.expr.match(new RegExp(`^(\\d+)/(\\d+) van ${NUM} = ${BOX}$`)))) return (parse(m[3]) / Number(m[2])) * Number(m[1]);
-  if ((m = q.expr.match(new RegExp(`^${NUM} \\+ ${BOX} = ${NUM}$`)))) return parse(m[2]) - parse(m[1]);
   if (q.beads !== undefined) return q.beads;
   return undefined; // stories, rounding: checked separately
 }
@@ -67,7 +94,7 @@ describe('curriculum', () => {
   it('rounds correctly', () => {
     const afronden = GROEPEN.flatMap((g) => g.topics).find((t) => t.id === 'afronden')!;
     for (const level of LEVELS) {
-      const unit = [10, 100, 1000][level - 1];
+      const unit = [10, 100, 1000, 10_000, 100_000][level - 1];
       for (let i = 0; i < SAMPLES; i++) {
         const q = afronden.make(level, Math.random);
         const n = parse(q.expr.split(' ')[0]);
@@ -79,6 +106,72 @@ describe('curriculum', () => {
 
   it('makes levels of 10', () => {
     expect(makeLevel(GROEPEN[2].topics[0], 1)).toHaveLength(QUESTIONS_PER_LEVEL);
+  });
+});
+
+/** A seeded random generator, so the level comparisons below never flake. */
+function seeded(seed: number): () => number {
+  return () => {
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Missing-number sums (a + □ = c) and two-step sums (a + b − c = □). */
+function isHardForm(q: Question): boolean {
+  const missingNumber = q.expr.includes('=') && !q.expr.trimEnd().endsWith(BOX);
+  const twoSteps = (q.expr.match(/ [+−×:] /g) ?? []).length >= 2;
+  return missingNumber || twoSteps;
+}
+
+describe('levels 4 and 5 are harder', () => {
+  const IDS = [
+    'tellen', 'voor-en-na', 'erbij-10', 'eraf-10', 'splitsen', 'tot-20', 'plus-100', 'min-100',
+    'tafels-1-2-5-10', 'rekenen-1000', 'alle-tafels', 'delen', 'plus-10000', 'min-10000',
+    'vermenigvuldigen', 'grote-getallen', 'staartdeling', 'procenten', 'afronden', 'onder-nul', 'gemengd',
+  ];
+  const topics = GROEPEN.flatMap((g) => g.topics);
+
+  function stats(id: string, level: LevelNo) {
+    const t = topics.find((x) => x.id === id)!;
+    const rng = seeded(level * 7919 + id.length);
+    let size = 0;
+    let hard = 0;
+    for (let i = 0; i < 300; i++) {
+      const q = t.make(level, rng);
+      size += Math.abs(q.answer);
+      if (isHardForm(q)) hard++;
+    }
+    return { size: size / 300, hard: hard / 300 };
+  }
+
+  it.each(IDS)('%s: levels 4 and 5 have bigger answers or harder forms than level 3', (id) => {
+    expect(topics.some((t) => t.id === id), id).toBe(true);
+    const three = stats(id, 3);
+    for (const level of [4, 5] as const) {
+      const s = stats(id, level);
+      expect(s.size >= three.size || s.hard > three.hard, `level ${level}: ${JSON.stringify({ three, s })}`).toBe(true);
+    }
+  });
+
+  it('levels 4 and 5 ask questions level 3 never asks', () => {
+    for (const id of IDS) {
+      const t = topics.find((x) => x.id === id)!;
+      const exprs = (level: LevelNo) => {
+        const rng = seeded(level);
+        return new Set(Array.from({ length: 200 }, () => {
+          const q = t.make(level, rng);
+          return `${q.expr}|${q.text.nl}|${q.answer}`;
+        }));
+      };
+      const three = exprs(3);
+      for (const level of [4, 5] as const) {
+        const other = [...exprs(level)].filter((e) => !three.has(e)).length;
+        expect(other, `${id} level ${level}`).toBeGreaterThan(0);
+      }
+    }
   });
 });
 
@@ -110,6 +203,11 @@ describe('story mode and lessons', () => {
   it.each(pictured)('%s level %s: picture matches the answer', (_, t, level) => {
     for (let i = 0; i < SAMPLES; i++) {
       const q = t.make(level, Math.random);
+      if (!q.scene && level >= 4 && GROEPEN[1].topics.includes(t)) {
+        // Missing-number sums on the harder levels have no picture, but must solve from the screen.
+        expect(solveFromScreen(q), q.expr).toBe(q.answer);
+        continue;
+      }
       expect(q.scene, q.text.nl).toBeDefined();
       expect(answerFromScene(q), q.text.nl).toBe(q.answer);
       expect(q.answer).toBeGreaterThanOrEqual(0);

@@ -1,4 +1,4 @@
-import type { Bi, LevelNo, Topic } from './core';
+import { MAX_LEVEL, type Bi, type LevelNo, type Topic } from './core';
 import { NextIcon, RetryIcon, StarIcon } from './Icons';
 import { Character, ItemPic } from './pictures';
 import type { RoundResult } from './Play';
@@ -40,7 +40,7 @@ export default function Finish({ topic, result, level, levelStars, newBest, stic
   const isLevel = level !== undefined && levelStars !== undefined;
   const ratio = result.correct / Math.max(1, result.total);
   const head = isLevel ? HEAD[levelStars] : HEAD[ratio >= 0.9 ? 3 : ratio >= 0.7 ? 2 : ratio >= 0.5 ? 1 : 0];
-  const hasNext = isLevel && level < 3 && canNext;
+  const hasNext = isLevel && level < MAX_LEVEL && canNext;
   const en = settings.english !== 'hidden';
 
   return (

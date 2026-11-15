@@ -2,7 +2,7 @@
 
 export type Bi = { nl: string; en: string };
 export type Lang = keyof Bi;
-export type LevelNo = 1 | 2 | 3;
+export type LevelNo = 1 | 2 | 3 | 4 | 5;
 export type Rng = () => number;
 
 /** Things we can draw in a picture. */
@@ -119,7 +119,17 @@ export interface Groep {
 }
 
 export const BOX = '□';
-export const LEVELS: LevelNo[] = [1, 2, 3];
+export const LEVELS: LevelNo[] = [1, 2, 3, 4, 5];
+export const MAX_LEVEL: LevelNo = 5;
+
+/** Short names for the levels on the map and the class board. */
+export const LEVEL_NAME: Record<LevelNo, Bi> = {
+  1: { nl: 'Makkelijk', en: 'Easy' },
+  2: { nl: 'Oefenen', en: 'Practice' },
+  3: { nl: 'Goed bezig', en: 'Getting good' },
+  4: { nl: 'Lastig', en: 'Tricky' },
+  5: { nl: 'Kampioen', en: 'Champion' },
+};
 export const QUESTIONS_PER_LEVEL = 10;
 
 export function fmtNl(n: number): string {

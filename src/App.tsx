@@ -87,7 +87,9 @@ function levelStats() {
   return {
     starredLevels: values.filter((s) => s >= 1).length,
     threeStarLevels: values.filter((s) => s === 3).length,
+    // A world counts as done after levels 1–3; levels 4–5 are the extra challenge.
     worldsDone: ALL_TOPICS.filter((t) => [1, 2, 3].every((l) => (all[`${t.id}:${l}`] ?? 0) >= UNLOCK_STARS)).length,
+    championLevels: Object.entries(all).filter(([k, s]) => k.endsWith(':5') && s >= 1).length,
   };
 }
 

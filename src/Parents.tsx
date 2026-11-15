@@ -1,3 +1,4 @@
+import { LEVELS } from './core';
 import { useEffect, useReducer, useState } from 'react';
 import type { Lang } from './core';
 import { canListen } from './listen';
@@ -151,7 +152,7 @@ export default function Parents({ settings, profile, onChange, onProfileChange, 
             <li key={t.id}>
               <span>{t.name.nl}</span>
               <span className="report-stars" aria-label="sterren per level">
-                {[1, 2, 3].map((l) => (
+                {LEVELS.map((l) => (
                   <span key={l} className="report-level">
                     L{l}: {levelStars[`${t.id}:${l}`] ?? '–'}
                   </span>

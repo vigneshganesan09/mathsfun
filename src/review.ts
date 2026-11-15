@@ -88,6 +88,8 @@ export interface Stats {
   threeStarLevels: number;
   starredLevels: number;
   worldsDone: number;
+  /** Levels 5 (Kampioen) with at least one star. */
+  championLevels?: number;
   lessonsDone: number;
   booksRead: number;
   /** Tables (1–10) with a perfect written test. */
@@ -116,7 +118,7 @@ export interface Sticker {
 export const STICKERS: Sticker[] = [
   { id: 'eerste-ster', name: { nl: 'Eerste ster', en: 'First star' }, how: { nl: 'Haal een ster in een level.', en: 'Earn a star in a level.' }, art: { item: 'balloon' }, earned: (s) => s.starredLevels >= 1 },
   { id: 'drie-sterren', name: { nl: 'Drie sterren!', en: 'Three stars!' }, how: { nl: 'Haal drie sterren in een level.', en: 'Earn three stars in a level.' }, art: { item: 'cupcake' }, earned: (s) => s.threeStarLevels >= 1 },
-  { id: 'wereld', name: { nl: 'Wereld klaar', en: 'World done' }, how: { nl: 'Haal een ster in alle levels van een wereld.', en: 'Earn a star in every level of a world.' }, art: { cast: 'jan' }, earned: (s) => s.worldsDone >= 1 },
+  { id: 'wereld', name: { nl: 'Wereld klaar', en: 'World done' }, how: { nl: 'Haal een ster in level 1, 2 en 3 van een wereld.', en: 'Earn a star in levels 1, 2 and 3 of a world.' }, art: { cast: 'jan' }, earned: (s) => s.worldsDone >= 1 },
   { id: 'honderd', name: { nl: '100 goed', en: '100 right' }, how: { nl: 'Geef 100 goede antwoorden.', en: 'Give 100 right answers.' }, art: { item: 'stroopwafel' }, earned: (s) => s.correctTotal >= 100 },
   { id: 'vijfhonderd', name: { nl: '500 goed', en: '500 right' }, how: { nl: 'Geef 500 goede antwoorden.', en: 'Give 500 right answers.' }, art: { item: 'cookie' }, earned: (s) => s.correctTotal >= 500 },
   { id: 'les', name: { nl: 'Goed geleerd', en: 'Well learned' }, how: { nl: 'Maak een les helemaal af.', en: 'Finish a lesson.' }, art: { cast: 'noor' }, earned: (s) => s.lessonsDone >= 1 },
@@ -126,6 +128,7 @@ export const STICKERS: Sticker[] = [
   { id: 'alle-tafels', name: { nl: 'Alle tafels!', en: 'All the tables!' }, how: { nl: 'Alle tafels van 1 tot 10 foutloos.', en: 'Every table 1 to 10 without a mistake.' }, art: { item: 'bike' }, earned: (s) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].every((t) => s.perfectTables.includes(t)) },
   { id: 'drie-dagen', name: { nl: '3 dagen op rij', en: '3 days in a row' }, how: { nl: 'Oefen drie dagen achter elkaar.', en: 'Practise three days in a row.' }, art: { cast: 'pip' }, earned: (s, today) => streak(s.days, today) >= 3 },
   { id: 'week', name: { nl: 'Een hele week', en: 'A whole week' }, how: { nl: 'Oefen zeven dagen achter elkaar.', en: 'Practise seven days in a row.' }, art: { item: 'duck' }, earned: (s, today) => streak(s.days, today) >= 7 },
+  { id: 'kampioen', name: { nl: 'Kampioen', en: 'Champion' }, how: { nl: 'Haal een ster in een Kampioen-level (level 5).', en: 'Earn a star in a Champion level (level 5).' }, art: { cast: 'uil' }, earned: (s) => (s.championLevels ?? 0) >= 1 },
 ];
 
 /** Stickers earned now that weren't before. */

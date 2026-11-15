@@ -1,6 +1,6 @@
 // Klas · digibord: the teacher drives a lesson on the classroom board (SPEC §16.1).
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import { answerLabel, BOX, GROEPEN, type Bi, type Lang, type LevelNo, type Question, type Topic } from './curriculum';
+import { answerLabel, BOX, GROEPEN, LEVEL_NAME, LEVELS, type Bi, type Lang, type LevelNo, type Question, type Topic } from './curriculum';
 import { BackIcon, CheckIcon, NextIcon, RetryIcon, SpeakerIcon, StarIcon } from './Icons';
 import { SceneView, VisualView } from './pictures';
 import { chime, speak, speakable, speakText, stopSpeaking } from './speech';
@@ -606,15 +606,11 @@ function SetupView({
             ))}
           </Field>
           <Field label="Niveau · Level">
-            <Chip value={1 as LevelNo} current={setup.level} onPick={set('level')} sub="easy">
-              1 · makkelijk
-            </Chip>
-            <Chip value={2 as LevelNo} current={setup.level} onPick={set('level')}>
-              2
-            </Chip>
-            <Chip value={3 as LevelNo} current={setup.level} onPick={set('level')} sub="hard">
-              3 · lastig
-            </Chip>
+            {LEVELS.map((l) => (
+              <Chip key={l} value={l} current={setup.level} onPick={set('level')} sub={LEVEL_NAME[l].en}>
+                {l} · {LEVEL_NAME[l].nl.toLowerCase()}
+              </Chip>
+            ))}
           </Field>
           <Field label="Aantal vragen · Questions">
             {([5, 10, 15] as const).map((n) => (
