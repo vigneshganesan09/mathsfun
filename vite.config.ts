@@ -10,6 +10,7 @@ export default defineConfig({
     // Installable, works offline (spec §2, milestone 10).
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: false, // registered in src/main.tsx so new versions reload at once
       includeAssets: ['favicon.png', 'apple-touch-icon.png', 'logo.webp'],
       manifest: {
         name: 'Duddu Learn',
@@ -27,6 +28,9 @@ export default defineConfig({
         ],
       },
       workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
+        cleanupOutdatedCaches: true,
         // Book covers are precached; the pages are cached the first time a book is opened.
         globPatterns: ['**/*.{js,mjs,css,html,svg,png}', 'books/*/cover.jpg'],
         // The pdf.js worker (PDF picture books) is ~1.4 MB.
