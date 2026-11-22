@@ -6,6 +6,8 @@ import { isoDay, STICKERS, streak } from './review';
 import { canSpeak, hasVoice } from './speech';
 import { createProfile, loadProfiles, loadStats, type Profile, type ProfileColour, type Settings } from './storage';
 import { TopBar } from './ui';
+import { cloudConfigured, syncNow } from './cloud';
+import './account.css';
 import { TeacherGrid } from './TeacherPicker';
 import { DEFAULT_TEACHER, type TeacherId } from './teachers';
 import { Beast, Bolle, Land, landFor, landName } from './Art';
@@ -64,9 +66,17 @@ export function Splash({ onStart }: { onStart: () => void }) {
 
 export type Mode = 'home' | 'class' | 'book' | 'read';
 
-export function ModeChooser({ onPick }: { onPick: (m: Mode) => void }) {
+export function ModeChooser({ onPick, account, onLogout }: { onPick: (m: Mode) => void; account?: string | null; onLogout?: () => void }) {
   return (
     <section className="screen">
+      {account && onLogout && (
+        <div className="account-bar">
+          <span className="t-label">Ingelogd als · Logged in as {account}</span>
+          <button className="btn btn-secondary btn-small" onClick={onLogout}>
+            Uitloggen · Log out
+          </button>
+        </div>
+      )}
       <header className="modes-head">
         <img className="modes-logo" src={`${import.meta.env.BASE_URL}logo.webp`} alt="Duddu Learn" width={96} height={96} />
         <div>
@@ -159,8 +169,8 @@ export function ProfilePicker({ onPick, onBack }: { onPick: (p: Profile) => void
           <span className="avatar av-add" aria-hidden="true">
             +
           </span>
-          <span className="t-title">Nieuw kind</span>
-          <span className="t-label muted">Add a child</span>
+          <span className="t-title">Leerling registreren</span>
+          <span className="t-label muted">Register a student</span>
         </button>
       </div>
     </section>
@@ -181,7 +191,9 @@ function Onboarding({ onDone, onBack }: { onDone: (p: Profile) => void; onBack: 
       setMissing(true);
       return;
     }
-    onDone(createProfile(n, colour, groep, teacher));
+    const p = createProfile(n, colour, groep, teacher);
+    if (cloudConfigured) void syncNow(); // saves the new student in the database
+    onDone(p);
   };
 
   return (
@@ -190,8 +202,8 @@ function Onboarding({ onDone, onBack }: { onDone: (p: Profile) => void; onBack: 
         onBack={onBack}
         title={
           <>
-            <h1 className="t-title">Hoi! Hoe heet je?</h1>
-            <p className="en">Hi! What's your name?</p>
+            <h1 className="t-title">Leerling registreren</h1>
+            <p className="en">Register a student · Hoe heet je? / What's your name?</p>
           </>
         }
       />

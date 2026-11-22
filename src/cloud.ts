@@ -135,6 +135,53 @@ function newId(): string {
 
 const online = () => typeof navigator === 'undefined' || navigator.onLine !== false;
 
+// ---------- login session: this browser session only, unless "stay logged in" ----------
+
+const REMEMBER_KEY = 'rekenpret.cloud.remember';
+
+/** Stay logged in on this device? Off by default: the login ends when the app or browser is closed. */
+export function rememberLogin(): boolean {
+  return readJson<boolean>(REMEMBER_KEY, false);
+}
+
+function setRemember(on: boolean): void {
+  setRaw(REMEMBER_KEY, JSON.stringify(on));
+}
+
+function store(): Storage | null {
+  try {
+    return rememberLogin() ? localStorage : sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
+/** Where Supabase keeps the session: localStorage when remembered, otherwise sessionStorage. */
+const authStorage = {
+  getItem: (k: string) => {
+    try {
+      return store()?.getItem(k) ?? null;
+    } catch {
+      return null;
+    }
+  },
+  setItem: (k: string, v: string) => {
+    try {
+      store()?.setItem(k, v);
+    } catch {
+      /* ignore */
+    }
+  },
+  removeItem: (k: string) => {
+    try {
+      localStorage.removeItem(k);
+      sessionStorage.removeItem(k);
+    } catch {
+      /* ignore */
+    }
+  },
+};
+
 // ---------- the client (loaded on demand) ----------
 
 let clientPromise: Promise<SupabaseClient | null> | null = null;
@@ -145,7 +192,7 @@ function getClient(): Promise<SupabaseClient | null> {
     clientPromise = import('@supabase/supabase-js')
       .then(({ createClient }) => {
         const c = createClient(URL_, KEY_, {
-          auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storageKey: 'rekenpret.cloud.auth' },
+          auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storageKey: 'rekenpret.cloud.auth', storage: authStorage },
         });
         c.auth.onAuthStateChange((_event, session) => {
           if (session?.user) setRaw(USER_KEY, JSON.stringify({ id: session.user.id, email: session.user.email ?? null }));
@@ -221,6 +268,114 @@ export async function signInWithEmail(email: string): Promise<{ ok: boolean; err
     console.warn('[cloud] sign in', e);
     return { ok: false, error: errText(e) };
   }
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export type AuthResult = { ok: true; needsConfirm?: boolean } | { ok: false; error: string };
+
+/** Friendly bilingual text for Supabase auth errors. */
+export function authErrorText(e: string): string {
+  const m = e.toLowerCase();
+  if (m === 'not-configured') return 'Online opslaan staat uit. · Saving online is switched off.';
+  if (m === 'invalid-email') return 'Dat e-mailadres klopt niet. · That email address is not valid.';
+  if (m === 'short-password') return 'Kies een wachtwoord van minstens 8 tekens. · Choose a password of at least 8 characters.';
+  if (m.includes('invalid login')) return 'E-mail of wachtwoord klopt niet. · Email or password is not right.';
+  if (m.includes('not confirmed')) return 'Bevestig eerst je e-mailadres via de mail die je kreeg. · Confirm your email address first (check your mail).';
+  if (m.includes('already registered') || m.includes('already been registered')) return 'Dit e-mailadres heeft al een account: log in. · This email already has an account: log in.';
+  if (m.includes('rate limit') || m.includes('security purposes')) return 'Even wachten en dan opnieuw proberen. · Please wait a moment and try again.';
+  if (m.includes('fetch') || m.includes('network')) return 'Geen verbinding. Is er internet? · No connection. Is there internet?';
+  return `Dat lukte niet: ${e}`;
+}
+
+/** Create a parent/teacher account (Supabase may send a confirmation email first). */
+export async function registerAccount(name: string, email: string, password: string, remember: boolean): Promise<AuthResult> {
+  const c = await getClient();
+  if (!c) return { ok: false, error: 'not-configured' };
+  const clean = email.trim();
+  if (!EMAIL_RE.test(clean)) return { ok: false, error: 'invalid-email' };
+  if (password.length < 8) return { ok: false, error: 'short-password' };
+  setRemember(remember);
+  try {
+    const { data, error } = await c.auth.signUp({
+      email: clean,
+      password,
+      options: { data: { full_name: name.trim().slice(0, 60) }, emailRedirectTo: location.origin + import.meta.env.BASE_URL },
+    });
+    if (error) return { ok: false, error: error.message };
+    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) return { ok: false, error: 'already registered' };
+    return { ok: true, needsConfirm: !data.session };
+  } catch (e) {
+    return { ok: false, error: errText(e) };
+  }
+}
+
+/** Log in with email and password. */
+export async function loginWithPassword(email: string, password: string, remember: boolean): Promise<AuthResult> {
+  const c = await getClient();
+  if (!c) return { ok: false, error: 'not-configured' };
+  const clean = email.trim();
+  if (!EMAIL_RE.test(clean)) return { ok: false, error: 'invalid-email' };
+  setRemember(remember);
+  try {
+    const { error } = await c.auth.signInWithPassword({ email: clean, password });
+    if (error) return { ok: false, error: error.message };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: errText(e) };
+  }
+}
+
+/** Forgot the password: email a link to set a new one (the app then asks for it). */
+export async function sendPasswordReset(email: string): Promise<AuthResult> {
+  const c = await getClient();
+  if (!c) return { ok: false, error: 'not-configured' };
+  const clean = email.trim();
+  if (!EMAIL_RE.test(clean)) return { ok: false, error: 'invalid-email' };
+  try {
+    const { error } = await c.auth.resetPasswordForEmail(clean, { redirectTo: location.origin + import.meta.env.BASE_URL });
+    return error ? { ok: false, error: error.message } : { ok: true };
+  } catch (e) {
+    return { ok: false, error: errText(e) };
+  }
+}
+
+/** Set a new password (after following the reset link). */
+export async function updatePassword(password: string): Promise<AuthResult> {
+  const c = await getClient();
+  if (!c) return { ok: false, error: 'not-configured' };
+  if (password.length < 8) return { ok: false, error: 'short-password' };
+  try {
+    const { error } = await c.auth.updateUser({ password });
+    return error ? { ok: false, error: error.message } : { ok: true };
+  } catch (e) {
+    return { ok: false, error: errText(e) };
+  }
+}
+
+/** True while the page was opened from a "new password" email link. */
+export function cameFromPasswordReset(): boolean {
+  return typeof location !== 'undefined' && /type=recovery/.test(location.hash + location.search);
+}
+
+/**
+ * Log out: save everything online first, then remove the children's data from this
+ * device (it comes back at the next login). Returns false if the save failed, so the
+ * caller can warn before throwing local data away.
+ */
+export async function logoutAndClear(force = false): Promise<boolean> {
+  const r = await syncNow();
+  if (r.error && !force) return false;
+  try {
+    for (const k of Object.keys(localStorage)) {
+      if (k.startsWith('rekenpret.p.') || k === 'rekenpret.profiles' || k === 'rekenpret.current' || k === SYNC_META_KEY || k === OUTBOX_KEY)
+        localStorage.removeItem(k);
+    }
+  } catch {
+    /* ignore */
+  }
+  await signOut();
+  return true;
 }
 
 export async function signOut(): Promise<void> {

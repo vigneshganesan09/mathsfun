@@ -82,3 +82,20 @@ and finished lessons keep the most finishes. Chosen voices stay per device.
   with it (ON DELETE CASCADE). Data on the device stays until the parent deletes the child there.
 - Supabase is the data processor; mention it in your privacy statement and sign their DPA if you
   use the app with a school.
+
+
+## Login and registration
+
+When the keys are set, the app opens with an account page: a parent or teacher **logs in** with
+email and password, or chooses **Account aanmaken** (name, email, password of at least 8
+characters). By default the login lasts until the app or browser is closed, so you log in each time;
+tick *Ingelogd blijven op dit apparaat* to stay logged in on a personal device. *Wachtwoord
+vergeten?* emails a link to set a new password.
+
+After logging in, **Leerling registreren** creates a student profile and saves it in the database
+straight away. Logging out saves everything online and removes the students' data from that device;
+it returns at the next login, on any device.
+
+Supabase settings for this: *Authentication → Providers → Email* on, with *Confirm email* on (new
+accounts must click the link in the confirmation mail first) or off (log in straight away). Add the
+site URL to *Redirect URLs* so the confirmation and password links come back to the app.

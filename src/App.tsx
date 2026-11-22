@@ -36,7 +36,8 @@ import { ModeChooser, ParentGate, ProfilePicker, Splash, StickerBook, type Mode 
 import WorldMap, { beastIndex, worldFound } from './WorldMap';
 import Toets from './Toets';
 import Tijd from './Tijd';
-import { CLOUD_RESTORED_EVENT, cloudRecord } from './cloud';
+import { cachedCloudUser, cameFromPasswordReset, CLOUD_RESTORED_EVENT, cloudConfigured, cloudRecord, getCloudUser, logoutAndClear, onCloudAuth, syncNow } from './cloud';
+import AccountGate from './AccountGate';
 import { buildToets, PASS_PCT, toetsId, type Tier } from './toetsData';
 
 const QUIZ_LENGTH = 5;
@@ -84,7 +85,7 @@ type Screen =
     }
   | { name: 'parents'; back: Screen };
 
-type Phase = 'splash' | 'modes' | 'profiles' | 'class' | 'book' | 'home';
+type Phase = 'splash' | 'account' | 'modes' | 'profiles' | 'class' | 'book' | 'home';
 
 let runCounter = 0;
 
@@ -114,6 +115,46 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
   const [gate, setGate] = useState<Screen | null>(null);
   const [, bump] = useState(0);
+
+  // ---- account (only when online saving is switched on) ----
+  const [account, setAccount] = useState<string | null>(() => cachedCloudUser()?.email ?? null);
+
+  /** After Start: log in first when the database is on (or a password reset link was opened). */
+  const afterSplash = async () => {
+    if (!cloudConfigured) return setPhase('modes');
+    const user = cameFromPasswordReset() ? null : await getCloudUser();
+    if (!user) return setPhase('account');
+    setAccount(user.email);
+    setPhase('modes');
+    void syncNow();
+  };
+
+  const signedIn = async () => {
+    const user = await getCloudUser();
+    setAccount(user?.email ?? null);
+    if (cameFromPasswordReset()) history.replaceState(null, '', location.pathname);
+    await syncNow(); // brings this account's students to the device
+    setPhase('modes');
+  };
+
+  const logout = async () => {
+    const saved = await logoutAndClear();
+    if (!saved && !window.confirm('Opslaan online lukte niet (geen internet?). Toch uitloggen? Wat nog niet online staat, gaat dan verloren. · Saving online failed. Log out anyway?')) return;
+    if (!saved) await logoutAndClear(true);
+    setAccount(null);
+    setProfile(null);
+    setScreen({ name: 'home' });
+    setPhase('account');
+  };
+
+  // Logged out somewhere else (e.g. the parent area): back to the account page.
+  useEffect(() => {
+    if (!cloudConfigured) return;
+    return onCloudAuth((u) => {
+      setAccount(u?.email ?? null);
+      if (!u) setPhase((p) => (p === 'splash' ? p : 'account'));
+    });
+  }, []);
 
   // A parent signed in on another device: children and progress came back from the cloud.
   useEffect(() => {
@@ -271,8 +312,9 @@ export default function App() {
 
   // ---------- before a child is chosen ----------
 
-  if (phase === 'splash') return <main className="app"><Splash onStart={() => setPhase('modes')} /></main>;
-  if (phase === 'modes') return <main className="app"><ModeChooser onPick={pickMode} /></main>;
+  if (phase === 'splash') return <main className="app"><Splash onStart={afterSplash} /></main>;
+  if (phase === 'account') return <main className="app"><AccountGate onSignedIn={signedIn} /></main>;
+  if (phase === 'modes') return <main className="app"><ModeChooser onPick={pickMode} account={account} onLogout={logout} /></main>;
   if (phase === 'profiles') return <main className="app"><ProfilePicker onPick={useProfile} onBack={() => setPhase('modes')} /></main>;
   if (phase === 'class') return <Klas onExit={() => setPhase('modes')} />;
   if (phase === 'book') return <main className="app"><Boek onExit={() => setPhase('modes')} /></main>;
