@@ -78,7 +78,6 @@ button.bookcard:active { transform: translateY(4px); box-shadow: none; }
 .rw.is-pend { color: var(--ink-muted); }
 
 /* The library and the open book use the prototype's wider page (960px). */
-.app:has(.library), .app:has(.spread), .app:has(.read-result) { max-width: 980px; }
 .spread .page-text { line-height: 1.55; }
 @media (max-width: 900px) {
   .spread { grid-template-columns: minmax(0, 1fr); }

@@ -13,7 +13,7 @@ import { Land, landFor } from './Art';
 import { GROEPEN } from './curriculum';
 
 /** practice: retries, hints, points. write/say: a test, one answer per question, revealed straight after. */
-export type PlayMode = 'practice' | 'write' | 'say';
+export type PlayMode = 'practice' | 'write' | 'say' | 'toets';
 
 export interface Mistake {
   /** The question with the right answer filled in, e.g. "7 × 8 = 56". */
@@ -318,7 +318,7 @@ export default function Play({ topic, questions, settings, mode = 'practice', on
       />
 
       <div className="card question-card" key={index}>
-        {test && <p className="test-badge t-label">{mode === 'write' ? 'Schrijftoets · written test' : 'Spreektoets · spoken test'}</p>}
+        {test && <p className="test-badge t-label">{mode === 'toets' ? 'Toets · test' : mode === 'write' ? 'Schrijftoets · written test' : 'Spreektoets · spoken test'}</p>}
         {q.again && <p className="test-badge t-label">Nog een keer! · One more time!</p>}
         <BiText bi={q.text} speakAs={q.speak} settings={settings} />
 

@@ -109,7 +109,11 @@ export function updateProfile(p: Profile): void {
   );
 }
 
+/** Children removed on this device; online sync deletes them there too instead of bringing them back. */
+export const DELETED_PROFILES = 'rekenpret.deletedProfiles';
+
 export function deleteProfile(id: string): void {
+  write(DELETED_PROFILES, [...new Set([...read<string[]>(DELETED_PROFILES, []), id])]);
   write(
     PROFILES,
     loadProfiles().filter((p) => p.id !== id),

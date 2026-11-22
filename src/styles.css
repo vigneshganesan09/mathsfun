@@ -2160,3 +2160,24 @@ button:disabled {
 .levels { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); }
 .level-tile { padding-left: 4px; padding-right: 4px; }
 @media (max-width: 480px) { .levels { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---------- Toets (assessment) ---------- */
+.toets-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); }
+.toets-tier { position: relative; display: flex; flex-direction: column; gap: var(--space-2); }
+.toets-tier .btn { margin-top: auto; }
+.toets-tier-head { display: flex; align-items: center; gap: var(--space-4); padding-right: 110px; }
+.toets-tier-head .t-title { margin: 0; }
+.toets-step { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 24px; }
+.tier-beginner .toets-step { background: var(--correct); color: #fff; }
+.tier-medium .toets-step { background: var(--sun); }
+.tier-advanced .toets-step { background: var(--brand); }
+.tier-pro .toets-step { background: var(--ink); color: #fff; }
+.toets-tier.is-passed { border-color: var(--correct); box-shadow: 0 4px 0 var(--correct); }
+.toets-tier.is-locked { background: #f3ece0; box-shadow: none; }
+.toets-tier.is-locked .toets-step { opacity: 0.5; }
+.toets-note { margin: 0; font-weight: 700; }
+.toets-best { display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.toets-lock { display: flex; align-items: center; gap: 8px; margin: auto 0 0; color: var(--ink-muted); }
+.feature-toets { background: var(--ink); color: #fff; }
+.feature-toets .t-label, .feature-toets .en { color: #fff; }
+.feature-toets .feature-cast { background: var(--card); }

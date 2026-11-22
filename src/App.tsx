@@ -34,8 +34,18 @@ import TeacherPicker from './TeacherPicker';
 import { learnQuestions, tableScoreId, tableTopic, testQuestions, type TableId, type TableMode } from './tableData';
 import { ModeChooser, ParentGate, ProfilePicker, Splash, StickerBook, type Mode } from './Welcome';
 import WorldMap, { beastIndex, worldFound } from './WorldMap';
+import Toets from './Toets';
+import { CLOUD_RESTORED_EVENT, cloudRecord } from './cloud';
+import { buildToets, PASS_PCT, toetsId, type Tier } from './toetsData';
 
 const QUIZ_LENGTH = 5;
+
+function toetsSubtitle(tier: Tier, r: RoundResult): string {
+  const pct = Math.round((100 * r.correct) / Math.max(1, r.total));
+  return pct >= PASS_PCT
+    ? `Toets ${tier.name.nl}: ${pct}% · geslaagd! / passed!`
+    : `Toets ${tier.name.nl}: ${pct}% · nog niet geslaagd, ${PASS_PCT}% nodig / not passed yet, ${PASS_PCT}% needed`;
+}
 const MIX_LENGTH = 10;
 
 /** Where a round of questions came from. */
@@ -43,7 +53,8 @@ type Source =
   | { kind: 'level'; groep: Groep; level: LevelNo }
   | { kind: 'quiz'; lesson: Lesson }
   | { kind: 'table'; table: TableId; mode: TableMode }
-  | { kind: 'mix' };
+  | { kind: 'mix' }
+  | { kind: 'toets'; groep: Groep; tier: Tier };
 
 type Screen =
   | { name: 'home' }
@@ -56,6 +67,7 @@ type Screen =
   | { name: 'words'; words: { word: string; sentence: string }[] }
   | { name: 'stickers' }
   | { name: 'teacher' }
+  | { name: 'toets' }
   | { name: 'play'; source: Source; topic: Topic; questions: Question[]; run: number }
   | {
       name: 'finish';
@@ -100,6 +112,22 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
   const [gate, setGate] = useState<Screen | null>(null);
   const [, bump] = useState(0);
+
+  // A parent signed in on another device: children and progress came back from the cloud.
+  useEffect(() => {
+    const restored = () => {
+      const id = loadCurrentProfileId();
+      const p = loadProfiles().find((x) => x.id === id) ?? null;
+      if (p) {
+        setActiveProfile(p.id);
+        setProfile(p);
+        setSettings(loadSettings());
+      }
+      bump((n) => n + 1);
+    };
+    window.addEventListener(CLOUD_RESTORED_EVENT, restored);
+    return () => window.removeEventListener(CLOUD_RESTORED_EVENT, restored);
+  }, []);
 
   // Each screen starts at the top.
   useEffect(() => {
@@ -148,6 +176,8 @@ export default function App() {
         return makeLevel(topic, 1, Math.random, QUIZ_LENGTH);
       case 'table':
         return source.mode === 'learn' && source.table !== 'mix' ? learnQuestions(source.table) : testQuestions(source.table);
+      case 'toets':
+        return buildToets(source.groep, source.tier);
       case 'mix':
         return dueSkills(loadSkills(), today())
           .slice(0, MIX_LENGTH)
@@ -166,10 +196,13 @@ export default function App() {
           ? { name: 'lessons' }
           : source.kind === 'table'
             ? { name: 'tables', table: source.table }
-            : { name: 'home' },
+            : source.kind === 'toets'
+              ? { name: 'toets' }
+              : { name: 'home' },
     );
 
-  const playMode = (source: Source): PlayMode => (source.kind === 'table' && source.mode !== 'learn' ? source.mode : 'practice');
+  const playMode = (source: Source): PlayMode =>
+    source.kind === 'toets' ? 'toets' : source.kind === 'table' && source.mode !== 'learn' ? source.mode : 'practice';
 
   /** After a round: spaced review, stars, stats and stickers. */
   const finishRound = (source: Source, topic: Topic, result: RoundResult) => {
@@ -191,12 +224,21 @@ export default function App() {
       levelStars = starsFor(result.points, result.maxPoints);
       newBest = saveLevelStars(topic.id, source.level, levelStars);
       if (!foundBefore && worldFound(topic)) beast = beastIndex(topic.id);
+      cloudRecord({ kind: 'level', item: topic.id, level: source.level, correct: result.correct, total: result.total, stars: levelStars });
+    } else if (source.kind === 'toets') {
+      const pct = Math.round((100 * result.correct) / Math.max(1, result.total));
+      newBest = saveStars(toetsId(source.groep.id, source.tier.id), 1, pct) && pct > 0;
+      markCompleted(`toets:${source.groep.id}:${source.tier.id}`, result.correct, result.total);
+      cloudRecord({ kind: 'test', item: `groep-${source.groep.id}:${source.tier.id}`, correct: result.correct, total: result.total, pct });
     } else if (source.kind === 'quiz') {
       markCompleted(lessonKey(source.lesson.id), result.correct, result.total);
+      cloudRecord({ kind: 'lesson', item: source.lesson.id, correct: result.correct, total: result.total });
     } else if (source.kind === 'table' && source.mode === 'learn') {
       markCompleted(tableLearnKey(source.table), result.correct, result.total);
+      cloudRecord({ kind: 'table_learn', item: String(source.table), correct: result.correct, total: result.total });
     } else if (source.kind === 'table' && source.mode !== 'learn') {
       newBest = saveStars(tableScoreId(source.table, source.mode), 1, result.correct);
+      cloudRecord({ kind: 'table_test', item: `${source.table}:${source.mode}`, correct: result.correct, total: result.total, stars: result.correct });
     }
 
     const before = loadStats();
@@ -248,6 +290,7 @@ export default function App() {
           onStickers={() => setScreen({ name: 'stickers' })}
           onSwitch={() => setPhase('profiles')}
           onTeacher={() => setScreen({ name: 'teacher' })}
+          onToets={() => setScreen({ name: 'toets' })}
           onPick={(g) => setScreen({ name: 'map', groep: g })}
           onLessons={() => setScreen({ name: 'lessons' })}
           onStories={() => setScreen({ name: 'map', groep: STORY_GROEP })}
@@ -255,6 +298,9 @@ export default function App() {
           onReading={() => setScreen({ name: 'library' })}
           onParents={parents}
         />
+      )}
+      {screen.name === 'toets' && (
+        <Toets settings={settings} groepId={profile.groep} onBack={() => setScreen({ name: 'home' })} onStart={(groep, tier) => play({ kind: 'toets', groep, tier }, { id: `toets-${tier.id}`, name: { nl: `Toets ${tier.name.nl}`, en: `Test ${tier.name.en}` }, make: groep.topics[0].make })} />
       )}
       {screen.name === 'teacher' && <TeacherPicker settings={settings} onChange={updateSettings} onBack={() => setScreen({ name: 'home' })} />}
       {screen.name === 'stickers' && <StickerBook settings={settings} onBack={() => setScreen({ name: 'home' })} />}
@@ -324,7 +370,9 @@ export default function App() {
                 : MODE_LABEL[screen.source.mode]
               : screen.source.kind === 'quiz'
                 ? 'Les afgerond · Lesson closed'
-                : undefined
+                : screen.source.kind === 'toets'
+                  ? toetsSubtitle(screen.source.tier, screen.result)
+                  : undefined
           }
           newBest={screen.newBest}
           stickers={screen.stickers}
@@ -339,6 +387,8 @@ export default function App() {
               ? 'Naar de kaart'
               : screen.source.kind === 'quiz'
                 ? 'Naar de lessen'
+                : screen.source.kind === 'toets'
+                  ? 'Naar de toetsen'
                 : screen.source.kind === 'table'
                   ? 'Naar de tafeltrainer'
                   : 'Naar huis'

@@ -4,6 +4,7 @@ import { canListen, LISTEN_ERROR_TEXT, useListener, type ListenError } from './l
 import { Character, ItemPic, SceneView } from './pictures';
 import { Bolle, BolleSays, Land, StoryPicture } from './Art';
 import { loadPdfBooks } from './pdfBooks';
+import { cloudRecord } from './cloud';
 import { BUNDLED_PDFS, bundledPdf, decoratePdfBook, openBundledPdf, type BundledPdf } from './bundledPdfs';
 import { PdfBookTools, PdfImport } from './PdfShelf';
 import './library.css';
@@ -653,6 +654,8 @@ export function BookReader({ book, settings, onBack, onFinished }: ReaderProps) 
     if (lastPage) {
       const { pct } = totals(all);
       setNewBest(saveBookScore(book.id, pct));
+      const words = totals(all);
+      cloudRecord({ kind: 'book', item: book.id, correct: words.right, total: words.words, pct });
       onFinished?.();
       setPhase('done');
     } else {

@@ -23,9 +23,10 @@ interface Props {
   onStickers: () => void;
   onSwitch: () => void;
   onTeacher: () => void;
+  onToets: () => void;
 }
 
-export default function Start({ current, settings, onPick, onLessons, onStories, onTables, onReading, onParents, profile, streakDays, dueCount, onDailyMix, onStickers, onSwitch, onTeacher }: Props) {
+export default function Start({ current, settings, onPick, onLessons, onStories, onTables, onReading, onParents, profile, streakDays, dueCount, onDailyMix, onStickers, onSwitch, onTeacher, onToets }: Props) {
   const teacher = teacherById(settings.teacher);
   const en = settings.english !== 'hidden';
   return (
@@ -101,6 +102,14 @@ export default function Start({ current, settings, onPick, onLessons, onStories,
           <span className="t-title">Tafeltrainer</span>
           {en && <span className="en">Times tables</span>}
           <span className="t-label">Leren, schrijftoets en spreektoets</span>
+        </button>
+        <button className="tile feature-tile feature-toets" onClick={onToets}>
+          <span className="feature-cast">
+            <Character who="uil" size={64} />
+          </span>
+          <span className="t-title">Toets</span>
+          {en && <span className="en">Test</span>}
+          <span className="t-label">Beginner, Gemiddeld, Gevorderd, Pro</span>
         </button>
         <button className="tile feature-tile feature-read" onClick={onReading}>
           <span className="feature-cast">

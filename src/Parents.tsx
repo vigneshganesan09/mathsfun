@@ -1,4 +1,5 @@
 import { LEVELS } from './core';
+import { CloudAccount } from './CloudAccount';
 import { useEffect, useReducer, useState } from 'react';
 import type { Lang } from './core';
 import { canListen } from './listen';
@@ -108,6 +109,8 @@ export default function Parents({ settings, profile, onChange, onProfileChange, 
           </>
         }
       />
+
+      <CloudAccount english={settings.english !== 'hidden'} />
 
       <div className="card setting">
         <h2 className="t-label">Kind · Child</h2>

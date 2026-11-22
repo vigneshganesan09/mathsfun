@@ -1,0 +1,72 @@
+/* Adaptive layout: phone (< 768px), tablet (768–1199px), desktop (≥ 1200px).
+   Loaded after styles.css, so these rules win. */
+
+/* ----- page width ----- */
+.app { max-width: 100%; padding: var(--space-4); }
+@media (min-width: 768px) {
+  .app { max-width: 980px; padding: var(--space-6) var(--space-6) var(--space-10); }
+}
+@media (min-width: 1200px) {
+  .app { max-width: 1240px; padding: var(--space-10) var(--space-10); }
+}
+
+/* Screens where one thing needs focus stay at a readable width, centred. */
+.screen.play,
+.screen:has(> .card.lesson-card),
+.screen:has(> .celebrate),
+.screen:has(#child-name),
+.screen.splash { width: 100%; max-width: 760px; margin-inline: auto; }
+
+/* ----- grids ----- */
+.worlds { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+@media (min-width: 768px) {
+  .worlds { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lesson-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toets-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .groep-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .worlds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mode-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lesson-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .toets-tiers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .groep-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .table-grid { grid-template-columns: repeat(11, minmax(0, 1fr)); }
+}
+
+/* Home on desktop: the land banner and the teacher + streak tiles side by side. */
+@media (min-width: 1200px) {
+  .screen:has(> .land-button) { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
+  .screen:has(> .land-button) > * { grid-column: 1 / -1; }
+  .screen:has(> .land-button) > .land-button { grid-column: 1; grid-row: 2 / span 2; }
+  .screen:has(> .land-button) > .teacher-tile { grid-column: 2; grid-row: 2; }
+  .screen:has(> .land-button) > .home-row { grid-column: 2; grid-row: 3; }
+  .screen:has(> .land-button) .land-banner { height: 270px; }
+}
+
+/* ----- phone ----- */
+@media (max-width: 767px) {
+  .t-display { font-size: 38px; line-height: 42px; }
+  .home-row { grid-template-columns: 1fr 1fr; }
+  .btn-wide { width: 100%; }
+  .land-banner { height: 200px; }
+  .land-copy { left: 10px; top: 10px; padding: 8px 12px; }
+  .bookshelf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .bookcard-body { padding: var(--space-2) var(--space-4) var(--space-4); }
+  .bookcard-name { font-size: 18px; line-height: 22px; }
+}
+@media (max-width: 380px) {
+  .bookshelf { grid-template-columns: minmax(0, 1fr); }
+  .feature-grid, .mode-grid, .lesson-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Nothing may make the page scroll sideways. */
+html, body { overflow-x: hidden; }
+img, svg, video, canvas { max-width: 100%; }
+
+/* World cards: two per row from tablet up; the five level tiles wrap when a card is narrow. */
+@media (min-width: 1200px) { .worlds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.levels { grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); }

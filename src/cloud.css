@@ -1,0 +1,61 @@
+/* Online opslaan · Save online (parent area). Design tokens only. */
+
+.cloud-card p {
+  margin: 0;
+}
+
+.cloud-en {
+  display: block;
+}
+
+.cloud-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cloud-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+.cloud-facts dd {
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-weight: 700;
+}
+
+.cloud-email {
+  overflow-wrap: anywhere;
+}
+
+.cloud-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cloud-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch);
+  font-family: var(--font-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cloud-check input {
+  width: 28px;
+  height: 28px;
+  accent-color: var(--ink);
+}
+
+.cloud-note {
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-weight: 700;
+}
