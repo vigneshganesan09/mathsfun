@@ -2181,3 +2181,6 @@ button:disabled {
 .feature-toets { background: var(--ink); color: #fff; }
 .feature-toets .t-label, .feature-toets .en { color: #fff; }
 .feature-toets .feature-cast { background: var(--card); }
+.feature-tijd { background: var(--sun); }
+.feature-clock { width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.feature-clock svg { width: 64px; height: 64px; }

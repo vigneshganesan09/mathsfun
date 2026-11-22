@@ -1,6 +1,6 @@
 import { GROEPEN, type Groep } from './curriculum';
 import { ParentIcon } from './Icons';
-import { Character } from './pictures';
+import { Character, VisualView } from './pictures';
 import type { Profile, Settings } from './storage';
 import { BiText } from './ui';
 import { teacherById } from './teachers';
@@ -24,9 +24,10 @@ interface Props {
   onSwitch: () => void;
   onTeacher: () => void;
   onToets: () => void;
+  onTijd: () => void;
 }
 
-export default function Start({ current, settings, onPick, onLessons, onStories, onTables, onReading, onParents, profile, streakDays, dueCount, onDailyMix, onStickers, onSwitch, onTeacher, onToets }: Props) {
+export default function Start({ current, settings, onPick, onLessons, onStories, onTables, onReading, onParents, profile, streakDays, dueCount, onDailyMix, onStickers, onSwitch, onTeacher, onToets, onTijd }: Props) {
   const teacher = teacherById(settings.teacher);
   const en = settings.english !== 'hidden';
   return (
@@ -102,6 +103,14 @@ export default function Start({ current, settings, onPick, onLessons, onStories,
           <span className="t-title">Tafeltrainer</span>
           {en && <span className="en">Times tables</span>}
           <span className="t-label">Leren, schrijftoets en spreektoets</span>
+        </button>
+        <button className="tile feature-tile feature-tijd" onClick={onTijd}>
+          <span className="feature-cast feature-clock" aria-hidden="true">
+            <VisualView v={{ type: 'clock', h: 3, m: 0 }} />
+          </span>
+          <span className="t-title">Klok</span>
+          {en && <span className="en">Telling the time</span>}
+          <span className="t-label">Klok leren, zet de klok, digitaal en 24 uur</span>
         </button>
         <button className="tile feature-tile feature-toets" onClick={onToets}>
           <span className="feature-cast">

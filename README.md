@@ -138,6 +138,27 @@ For each table 1–10 (and all tables mixed):
 In the tests there are no pictures or hints, and each answer is revealed only after the child has
 answered. The results screen lists the sums to practise again. Best scores are shown per table.
 
+### Klok · Tijd leren
+
+A section for learning to tell the time: six step-by-step lessons (de wijzers en hele uren, half,
+kwart over/voor, per 5 minuten, de digitale en 24-uursklok, dagen en maanden); **Zet de klok**, where
+the child drags the long hand (or uses big +/− buttons) to a time said in Dutch clock language, 5
+levels from whole hours to the minute; **Lees de klok** (the clock worlds); **Digitaal & 24 uur**; and
+**Rekenen met tijd** (how long, what time after…, minutes/hours/days), each with 5 levels.
+
+### Toets · Test
+
+Per groep four tests that open one after the other: Beginner (levels 1–2), Gemiddeld (2–3),
+Gevorderd (3–4) and Pro (4–5). Every world of the groep is mixed in; one try per question, no hints;
+80% passes and opens the next test. Best score and stars are kept; any test can be retaken.
+
+### Online opslaan · Database
+
+Progress can be saved in a PostgreSQL database (Supabase) by a parent or teacher account (sign-in
+link by email, in the parent area). Students, every completion (levels, lessons, tables, tests,
+books, clock) and a backup of each child's progress are stored, protected per account. It is off
+until the Supabase project is set up: see `docs/DATABASE.md`.
+
 ### Lezen · Reading
 
 The library opens on the shelf for the child's groep: **groep 1–2** (voorlezen: the app reads to the

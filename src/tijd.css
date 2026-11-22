@@ -1,0 +1,262 @@
+/* Klok · Tijd leren. Design tokens only (see styles.css). */
+
+/* ---------- the clock ---------- */
+
+.tijd-clock {
+  display: block;
+  margin: 0 auto;
+  flex: none;
+}
+
+.tijd-clock-big {
+  width: min(320px, 80vw, 100%);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.tijd-clock-small {
+  width: 64px;
+  height: 64px;
+}
+
+.tijd-face {
+  fill: var(--card);
+  stroke: var(--ink);
+  stroke-width: 5;
+}
+
+.tijd-tick {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.tijd-tick-big {
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.tijd-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  fill: var(--ink);
+  user-select: none;
+}
+
+.tijd-clock-small .tijd-num,
+.tijd-clock-small .tijd-tick {
+  display: none;
+}
+
+.tijd-hand-hour {
+  stroke: var(--ink);
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+
+.tijd-hand-min-edge {
+  stroke: var(--ink);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.tijd-hand-min {
+  stroke: var(--brand);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.tijd-pin {
+  fill: var(--ink);
+}
+
+.tijd-knob {
+  fill: var(--brand);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.tijd-clock.is-live {
+  cursor: grab;
+  touch-action: none; /* dragging the hand must not scroll the page */
+  border-radius: var(--radius-pill);
+}
+
+.tijd-clock.is-dragging {
+  cursor: grabbing;
+}
+
+.tijd-clock.is-live .tijd-knob {
+  animation: tijd-knob-pulse 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.tijd-clock.is-dragging .tijd-knob {
+  animation: none;
+}
+
+.tijd-clock[aria-disabled='true'] {
+  cursor: default;
+}
+
+@keyframes tijd-knob-pulse {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* ---------- hub ---------- */
+
+.tijd-hub {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.tijd-hub-tile {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  border-radius: var(--radius-lg);
+  min-height: 96px;
+}
+
+.tijd-hub-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tijd-hub-tile .t-title {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+/* ---------- lessons ---------- */
+
+.tijd-slide {
+  align-items: stretch;
+}
+
+.tijd-digital {
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  background: var(--ink);
+  color: var(--sun);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-6);
+  min-width: 200px;
+  text-align: center;
+}
+
+.tijd-words {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.tijd-word {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 6px var(--space-4);
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tijd-word small {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.tijd-choices {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* ---------- zet de klok ---------- */
+
+.tijd-zet {
+  align-items: stretch;
+}
+
+.tijd-steppers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+.tijd-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.tijd-stepper > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-weight: 800;
+}
+
+.tijd-stepper small {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.tijd-step-btn {
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1;
+}
+
+.tijd-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (max-width: 420px) {
+  .tijd-hub {
+    grid-template-columns: 1fr;
+  }
+
+  .tijd-digital {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tijd-clock .tijd-knob {
+    animation: none !important;
+  }
+}

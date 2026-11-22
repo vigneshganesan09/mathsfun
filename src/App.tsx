@@ -35,6 +35,7 @@ import { learnQuestions, tableScoreId, tableTopic, testQuestions, type TableId, 
 import { ModeChooser, ParentGate, ProfilePicker, Splash, StickerBook, type Mode } from './Welcome';
 import WorldMap, { beastIndex, worldFound } from './WorldMap';
 import Toets from './Toets';
+import Tijd from './Tijd';
 import { CLOUD_RESTORED_EVENT, cloudRecord } from './cloud';
 import { buildToets, PASS_PCT, toetsId, type Tier } from './toetsData';
 
@@ -50,7 +51,7 @@ const MIX_LENGTH = 10;
 
 /** Where a round of questions came from. */
 type Source =
-  | { kind: 'level'; groep: Groep; level: LevelNo }
+  | { kind: 'level'; groep: Groep; level: LevelNo; from?: 'tijd' }
   | { kind: 'quiz'; lesson: Lesson }
   | { kind: 'table'; table: TableId; mode: TableMode }
   | { kind: 'mix' }
@@ -68,6 +69,7 @@ type Screen =
   | { name: 'stickers' }
   | { name: 'teacher' }
   | { name: 'toets' }
+  | { name: 'tijd' }
   | { name: 'play'; source: Source; topic: Topic; questions: Question[]; run: number }
   | {
       name: 'finish';
@@ -190,7 +192,9 @@ export default function App() {
 
   const leave = (source: Source) =>
     setScreen(
-      source.kind === 'level'
+      source.kind === 'level' && source.from === 'tijd'
+        ? { name: 'tijd' }
+        : source.kind === 'level'
         ? { name: 'map', groep: source.groep }
         : source.kind === 'quiz'
           ? { name: 'lessons' }
@@ -223,7 +227,7 @@ export default function App() {
       const foundBefore = worldFound(topic);
       levelStars = starsFor(result.points, result.maxPoints);
       newBest = saveLevelStars(topic.id, source.level, levelStars);
-      if (!foundBefore && worldFound(topic)) beast = beastIndex(topic.id);
+      if (!source.from && !foundBefore && worldFound(topic)) beast = beastIndex(topic.id);
       cloudRecord({ kind: 'level', item: topic.id, level: source.level, correct: result.correct, total: result.total, stars: levelStars });
     } else if (source.kind === 'toets') {
       const pct = Math.round((100 * result.correct) / Math.max(1, result.total));
@@ -291,12 +295,26 @@ export default function App() {
           onSwitch={() => setPhase('profiles')}
           onTeacher={() => setScreen({ name: 'teacher' })}
           onToets={() => setScreen({ name: 'toets' })}
+          onTijd={() => setScreen({ name: 'tijd' })}
           onPick={(g) => setScreen({ name: 'map', groep: g })}
           onLessons={() => setScreen({ name: 'lessons' })}
           onStories={() => setScreen({ name: 'map', groep: STORY_GROEP })}
           onTables={() => setScreen({ name: 'tables', table: null })}
           onReading={() => setScreen({ name: 'library' })}
           onParents={parents}
+        />
+      )}
+      {screen.name === 'tijd' && (
+        <Tijd
+          settings={settings}
+          onBack={() => setScreen({ name: 'home' })}
+          onPractice={(topic, level) =>
+            play({ kind: 'level', groep: GROEPEN.find((g) => g.topics.some((t) => t.id === topic.id)) ?? GROEPEN[3], level, from: 'tijd' }, topic)
+          }
+          onFinished={(r) => {
+            markCompleted(r.activity, r.correct, r.total);
+            cloudRecord({ kind: 'tijd', item: r.activity, correct: r.correct, total: r.total });
+          }}
         />
       )}
       {screen.name === 'toets' && (
